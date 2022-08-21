@@ -1,5 +1,5 @@
 /* 三国杀DIY吧2020版模板 */
-/* 原作者：kaveil */
+/* 原作者：kaveil、低调de洛沫（经典版勾玉） */
 /* 编写：开不了车 */
 /* 如有需要，可以修改所用字体、字号 */
 
@@ -8,11 +8,20 @@
 	height: 806px;
 	border-radius: 20px;
 	--variants: 魏, wei, 蜀, shu, 吴, wu, 群, qun, 晋, jin, 晋（青）, jina, 神, god,
-		魏主公, wei lord, 蜀主公, shu lord, 吴主公, wu lord, 群主公, qun lord, 晋主公, jin lord, 晋主公（青）, jina lord,
-		水墨魏, wei ink, 水墨蜀, shu ink, 水墨吴, wu ink,
+		魏主公, wei lord, 蜀主公, shu lord, 吴主公, wu lord, 群主公, qun lord, 晋主公, jin lord, 晋主公（青）, jina lord;
+		/*水墨魏, wei ink, 水墨蜀, shu ink, 水墨吴, wu ink,
 		水墨群, qun ink, 水墨晋, jin ink, 水墨晋（青）, jina ink, 水墨神, god ink,
 		水墨魏主公, wei lord ink, 水墨蜀主公, shu lord ink, 水墨吴主公, wu lord ink,
-		水墨群主公, qun lord ink, 水墨晋主公, jin lord ink, 水墨晋主公（青）, jina lord ink;
+		水墨群主公, qun lord ink, 水墨晋主公, jin lord ink, 水墨晋主公（青）, jina lord ink,
+		经典魏, wei old, 经典蜀, shu old, 经典吴, wu old,
+		经典群, qun old, 经典晋, jin old, 经典晋（青）, jina old, 经典神, god old,
+		经典魏主公, wei lord old, 经典蜀主公, shu lord old, 经典吴主公, wu lord old,
+		经典群主公, qun lord old, 经典晋主公, jin lord old, 经典晋主公（青）, jina lord old;*/
+	
+	--extra-segments: 体力样式, hp-style;
+	--extra-segment-types: enum;
+	--extra-hp-style-values: default, ink, old;
+	--extra-hp-style-names: 普通, 水墨, 经典;
 }
 
 .card .frame::before {
@@ -297,8 +306,15 @@
 
 
 /* Ink Style */
-.card.ink .frame .hitpoints li {
+.card.ink .frame .hitpoints li, .card[extra-hp-style="ink"] .frame .hitpoints li {
 	background-position-y: -50px;
+}
+.card.old .frame .hitpoints li, .card[extra-hp-style="old"] .frame .hitpoints li {
+	background-position-y: -100px;
+	margin-right: -4px;
+}
+.hp-style {
+	display: none;
 }
 
 

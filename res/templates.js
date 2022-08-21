@@ -1,4 +1,5 @@
 var TEMPLATES = [
+	{name: "经典模板", path: "classic/classic"},
 	{name: "经典模板（卤粉）", path: "classic/lufen"},
 	{name: "经典模板（自定配色）", path: "classic/custom-colored"},
 	{name: "经典模板（卡牌）", path: "classic/cards"},
