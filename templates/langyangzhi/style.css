@@ -70,17 +70,19 @@
 .card.classic .nickname, .card.classic .nickname-small{
     left: 52px;
     top: 282px;
-    width: 78px;
+    width: 156px;
     height: auto;
     color: #1E8542;
     margin: 0;
     font-family: 'FZKaTong', 'Arial';
-    font-size: 12px;
+    font-size: 24px;
     z-index: 2;
     text-align: right;
+	transform-origin: left top;
+	transform: scale(.5);
 }
 .card.classic .nickname-small{
-	font-size: 11px;
+	font-size: 22px;
 }
 
 .card.classic .name, .card.classic .name-small{
@@ -152,6 +154,16 @@
 	margin-left: -12px;
 	line-height: 40px;
 	text-align: center;
+	vertical-align: bottom;
+}
+.card.classic .description .pointer[length="3"]{
+	font-size: 18px;
+}
+.card.classic .description .pointer[length="4"]{
+	font-size: 14px;
+}
+.card.classic .description .pointer[length="5"]{
+	font-size: 12px;
 }
 
 .card.classic .description p::after { /* 换行 */
@@ -160,29 +172,33 @@
 }
 
 .card.classic .footer {
-	left: 0;
-	top: 0;
-	font-size: 10px;
+	right: 348px;
+	bottom: 110px;
+	font-size: 20px;
+	width: 1000px;
+	text-align: right;
 	font-family: Microsoft YaHei;
+	transform-origin: 100% 0;
+	transform: scale(.5) rotate(90deg);
 }
 .card.classic .footer label {
-	position: absolute;
+	position: static;
 	color: #1E8542;
 	text-shadow: 0 0 1px white, 0 0 1px white;
 }
 
 .card.classic .footer .index {
-	font-size: 16px;
-	width: 100px;
-    left: 32px;
-    top: 28px;
-    transform: rotate(-32deg);
+	position: absolute;
+	font-size: 32px;
+	left: 272px;
+	top: -101px;
+	transform: rotate(-122deg);
 }
 .card.classic .footer .trademark {
-	left: -70px;
-    top: 290px;
+	right: 360px;
+    bottom: 290px;
     width: 160px;
-    transform: rotate(90deg);
+	margin-right: 1em;
 }
 .card.classic .footer .illustrator {
 	left: -70px;
@@ -345,36 +361,37 @@
 
 .card.new .description {
 	left: 21px;
-	width: 282px;
+	width: 564px;
 	bottom: 21px;
 	margin-bottom: 0;
-	padding: 12px 20px 12px 20px;
+	padding: 24px 40px 24px 40px;
 	background: url('images/decade/panel.png') 0 0 / 100% auto;
-	border-radius: 20px 12px;
+	border-radius: 40px 24px;
+	transform-origin: 0 100%;
+	transform: scale(.5);
 }
 .card.new .description::before {
 	content: '';
 	position: absolute;
 	left: 0;
-	top: -6px;
+	top: -12px;
 	width: 100%;
-	height: 34px;
+	height: 68px;
 	background: url('images/decade/panel-top.png') no-repeat 0 100% / 100% auto;
 }
 .card.new .description::after {
 	content: '';
 	position: absolute;
 	left: 0;
-	bottom: -6px;
+	bottom: -12px;
 	width: 100%;
-	height: 34px;
+	height: 68px;
 	background: url('images/decade/panel-bottom.png') no-repeat 0 0 / 100% auto;
 }
 
 .card.new .description p{
 	display: inline;
-	min-height: 20px;
-	width: 244px;
+	min-height: 40px;
 	color: white;
 	font-family: KaiTi;
 }
@@ -384,19 +401,19 @@
 }
 
 .card.new .description {
-	font-size: 12px;
+	font-size: 24px;
 	font-family: SimHei;
 	font-weight: bold;	
 }
 
 .card.new .description-tiny{
-	font-size: 8px;
+	font-size: 16px;
 }
 .card.new .description-small{
-	font-size: 9px;
+	font-size: 18px;
 }
 .card.new .description-large{
-	font-size: 14px;
+	font-size: 28px;
 }
 
 .card.new .description .pointer{
@@ -404,16 +421,19 @@
 	color: black;
 	list-style: none;
 	background: url('images/decade/pointer.png') no-repeat center / cover;
-	width: 49px;
-	height: 30px;
-	font-size: 18px;
+	width: 98px;
+	height: 60px;
+	font-size: 36px;
 	font-family: XingKai;
 	font-weight: bold;	
-	margin-left: -12px;
-	line-height: 30px;
+	margin-left: -24px;
+	line-height: 60px;
 	text-align: center;
-	text-shadow: -.5px -.5px white, .5px -.5px white, -.5px .5px white, .5px .5px white;
+	text-shadow: -1px -1px white, 1px -1px white, -1px 1px white, 1px 1px white;
 	position: relative;
+}
+.card.new.on-rendering .description .pointer{
+	text-shadow: -.5px -.5px white, .5px -.5px white, -.5px .5px white, .5px .5px white;
 }
 .card.new .description p::after { /* 换行 */
 	content: '';
@@ -423,16 +443,18 @@
 .card.new .footer {
 	left: 32px;
 	bottom: 3px;
-	width: 300px;
-	font-size: 10px;
+	width: 600px;
+	font-size: 20px;
 	font-family: Microsoft YaHei;
+	transform-origin: 0 100%;
+	transform: scale(.5);
 }
 .card.new .footer label {
 	position: static;
 	left: 0px;
 	top: 0px;
 	color: black;
-	text-shadow: 0 0 1px white, 0 0 1px white;
+	text-shadow: 0 0 2px white, 0 0 2px white;
 }
 
 .card.new .footer .index {

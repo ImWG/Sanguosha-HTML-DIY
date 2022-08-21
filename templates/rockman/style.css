@@ -148,19 +148,22 @@
 
 .card .description {
 	left: 122px;
-	right: 67px;
+	/* right: 67px; */
 	bottom: 40px;
+	width: 632px;
 	margin-bottom: 17px;
-	padding: 10px 14px 10px 24px;
-	background: url('images/panel.png') 0 100%;
-	border: 3px white ridge;
-	border-radius: 3px;
+	padding: 20px 28px 20px 48px;
+	background: url('images/panel.png') 0 100% / 40px auto;
+	border: 6px white ridge;
+	border-radius: 6px;
 	color: white;
+	transform-origin: 0 100%;
+	transform: scale(.5);
 }
 
 .card .description p{
-	min-height: 36px;
-	font-size: 16px;
+	min-height: 72px;
+	font-size: 32px;
 	font-family: SimHei;
 }
 .card .description p.quote {
@@ -169,29 +172,29 @@
 }
 
 .card .description-tiny p{
-	font-size: 11px;
+	font-size: 22px;
 }
 .card .description-small p{
-	font-size: 14px;
+	font-size: 28px;
 }
 .card .description-large p{
-	font-size: 18px;
+	font-size: 36px;
 }
 
 .card .description .pointer{
 	display: block;
 	position: absolute;
 	list-style: none;
-	background: url('images/pointer.png') no-repeat 0px 0px;
-	width: 102px;
-	height: 41px;
-	padding-right: 12px;
-	font-size: 24px;
+	background: url('images/pointer.png') no-repeat 0px 0px / 228px auto;
+	width: 204px;
+	height: 82px;
+	padding-right: 24px;
+	font-size: 48px;
 	font-family: Microsoft YaHei;
 	font-weight: bold;
-	left: -91px;
-	margin-top: -8px;
-	line-height: 38px;
+	left: -182px;
+	margin-top: -16px;
+	line-height: 76px;
 	text-align: center;
 	color: black;
 }
@@ -199,13 +202,13 @@
 	background-image: url('images/pointer-lord.png');
 }
 .card .description .pointer[length='3']{
-	font-size: 20px;
-	line-height: 37px;
+	font-size: 40px;
+	line-height: 74px;
 }
 .card .description .pointer[length='4']{
-	font-size: 17px;
+	font-size: 34px;
 	letter-spacing: -.1em;
-	line-height: 35px;
+	line-height: 70px;
 }
 
 .card .footer {

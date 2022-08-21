@@ -55,6 +55,7 @@
 	letter-spacing: -.25em;
 	margin-left: -.125em;
 	line-height: 54px;
+	padding-right: 1em;
 }
 
 .card .hitpoints{
@@ -126,52 +127,56 @@
 .card .description {
 	left: 71px;
 	bottom: 39px;
-	width: 304px;
-	height: 100px;
-	font-size: 14px;
+	width: 608px;
+	height: 200px;
+	font-size: 28px;
 	font-family: ZhunYuan;
+	transform-origin: 0 100%;
+	transform: scale(0.5);
 }
 
 .card .description p{
-	min-height: 20px;
-	text-indent: 14px;
+	min-height: 40px;
+	text-indent: 1em;
 }
 .card .description p.quote {
 	font-style: italic;
 	text-align: right;
 	font-family: SimSun;
-	font-size: 12px;
+	font-size: 24px;
 }
 
 .card .description-tiny{
-	font-size: 11px;
+	font-size: 22px;
 }
 .card .description-small{
-	font-size: 12px;
+	font-size: 24px;
 }
 .card .description-large{
-	font-size: 15px;
+	font-size: 30px;
 }
 
 .card .description .pointer{
 	display: block;
 	position: absolute;
-	width: 54px;
-	height: 24px;
-	background: url('images/pointer-wei.png') no-repeat 0px 0px;
-	padding-left: 10px;
-	font-size: 18px;
+	width: 108px;
+	height: 48px;
+	background: url('images/pointer-wei.png') no-repeat 0px 0px / 128px auto;
+	padding-left: 20px;
+	font-size: 36px;
 	font-family: LiShu;
-	left: -52px;
-	margin-top: -2px;
+	left: -104px;
+	margin-top: -4px;
 }
 
 .card .footer {
 	left: 79px;
 	bottom: 10px;
-	width: 285px;
-	font-size: 10px;
+	width: 570px;
+	font-size: 20px;
 	font-family: SimSun;
+	transform-origin: 0 100%;
+	transform: scale(0.5);
 }
 .card .footer label {
 	position: static;
@@ -201,6 +206,9 @@
 	text-align: center;
 	color: white;
 	font-size: 13px;
+}
+.card .partner:empty {
+	display: none;
 }
 
 
@@ -470,4 +478,110 @@
 .card.xwei .partner, .card.xshu .partner,
 .card.xwu .partner, .card.xqun .partner {
 	background-image: url('images/partner-qun.png');
+}
+
+/* Each kingdom can only one character */
+.card.xwei .frame .custom-kingdom , .card.xshu .frame .custom-kingdom ,
+.card.xwu .frame .custom-kingdom , .card.xqun .frame .custom-kingdom  {
+	font-size: 48px;
+	width: 1em;
+	padding-left: .5em;
+	padding-right: .5em;
+	height: 2em;
+	line-height: 2em;
+	margin-left: -0.2em;
+	margin-top: -0.5em;
+	background-image: none !important;
+	overflow: hidden;
+	-webkit-background-clip: initial;
+	text-shadow: 0 0 4px black, 0 0 4px black, -.5em -1.5em var(--second-color),
+		-.5em -1.5em 4px black, -.5em -1.5em 4px black;
+}
+.card.xwei.xshu .frame .custom-kingdom , .card.xwei.xwu .frame .custom-kingdom ,
+.card.xwei.xqun .frame .custom-kingdom , .card.xshu.xwu .frame .custom-kingdom ,
+.card.xshu.xqun .frame .custom-kingdom , .card.xwu.xqun .frame .custom-kingdom  {
+    height: 2.25em;
+	font-size: 42px;
+	text-shadow: 0 0 4px black, 0 0 4px black,
+		-.5em -1.5em var(--second-color), -.5em -1.5em 4px black, -.5em -1.5em 4px black,
+		.25em -3.3em var(--third-color), .25em -3.3em 4px black, .25em -3.3em 4px black;
+}
+.card.xwei.xshu.xwu .frame .custom-kingdom {
+	font-size: 36px;
+	height: 3.5em;
+    line-height: 3em;
+    top: -10px;
+	color: #9DCBE8;
+	text-shadow: 0 0 4px black, 0 0 4px black,
+		-.5em -2.5em #f39e4b, -.5em -2.5em 4px black, -.5em -2.5em 4px black,
+		.5em -5.5em #B0CD6A, .5em -5.5em 4px black, .5em -5.5em 4px black,
+		0 -8em #A2A0A0, 0 -5em 4px black, 0 -5em 4px black;
+}
+.card.xwei .custom-kingdom {
+	--second-color: #9DCBE8;
+}
+.card.xshu .custom-kingdom {
+	--second-color: #f39e4b;
+}
+.card.xwu .custom-kingdom {
+	--second-color: #B0CD6A;
+}
+.card.xqun .custom-kingdom {
+	--second-color: #A2A0A0;
+}
+.card.xwei.xshu .custom-kingdom {
+	--second-color: #9DCBE8;
+	--third-color: #f39e4b;
+}
+.card.xwei.xwu .custom-kingdom {
+	--second-color: #9DCBE8;
+	--third-color: #B0CD6A;
+}
+.card.xwei.xqun .custom-kingdom {
+	--second-color: #9DCBE8;
+	--third-color: #A2A0A0;
+}
+.card.xshu.xwu .custom-kingdom {
+	--second-color: #f39e4b;
+	--third-color: #B0CD6A;
+}
+.card.xshu.xqun .custom-kingdom {
+	--second-color: #f39e4b;
+	--third-color: #A2A0A0;
+}
+.card.xwu.xqun .custom-kingdom {
+	--second-color: #B0CD6A;
+	--third-color: #A2A0A0;
+}
+
+
+/* for gradient */
+.card .frame .custom-kingdom {
+    background-image: -webkit-linear-gradient(white 0%, #ABEBFF 100%);
+    -webkit-background-clip: text;
+}
+.card:not(.xwei):not(.xshu):not(.xwu):not(.xqun).on-rendering .frame .custom-kingdom{
+	color: black;
+}
+
+.card.shu .frame .custom-kingdom {
+    background-image: -webkit-linear-gradient(white 0%, #FEA449 100%);
+}
+.card.wu .frame .custom-kingdom {
+    background-image: -webkit-linear-gradient(white 0%, #BDDB77 100%);
+}
+.card.qun .frame .custom-kingdom {
+    background-image: -webkit-linear-gradient(white 0%, #9A9A99 100%);
+}
+.card.lord .frame .custom-kingdom {
+    background-image: -webkit-linear-gradient(135deg, white 0%, #FFFF6D 10%, #C7B316 20%, #FFFF6D 30%, white 40%, #FFFF6D 50%, #C7B316 60%, #FFFF6D 70%, white 80%, #FFFF6D 90%, #C7B316 100%);
+}
+.card.on-rendering.lord .frame .custom-kingdom {
+    background-image: -webkit-linear-gradient(-135deg, white 0%, #FFFF6D 10%, #C7B316 20%, #FFFF6D 30%, white 40%, #FFFF6D 50%, #C7B316 60%, #FFFF6D 70%, white 80%, #FFFF6D 90%, #C7B316 100%);
+}
+.card.god .frame .custom-kingdom {
+    background-image: -webkit-linear-gradient(135deg, white 0%, #BBBAB8 15%, white 30%, #BBBAB8 45%, white 60%, #BBBAB8 75%, white 90%);
+}
+.card.on-rendering.god .frame .custom-kingdom {
+    background-image: -webkit-linear-gradient(-135deg, white 0%, #BBBAB8 15%, white 30%, #BBBAB8 45%, white 60%, #BBBAB8 75%, white 90%);
 }

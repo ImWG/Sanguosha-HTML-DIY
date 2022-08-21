@@ -55,9 +55,9 @@
 	font-family: 'JMMaoCaoXingEx', 'JMMaoCaoXing', 'STXingKai';
 	font-size: 64px;
 	font-weight: bold;
-	left: 22px;
+	left: 2px;
 	top: 20px;
-	min-width: 64px;
+	min-width: 104px;
 	text-align: center;
 	color: var(--extra-edge-color);
 	text-shadow: -2px 0 black, 0 -2px black, 2px 0 black, 0 2px black,
@@ -216,20 +216,23 @@
 
 .card .description {
 	left: 88px;
-	right: 43px;
+	/* right: 43px; */
 	bottom: 48px;
-	padding: 12px 16px 12px 20px;
-	border-radius: 30px;
+	width: 506px;
+	padding: 24px 32px 24px 40px;
+	border-radius: 60px;
+	transform-origin: 0 100%;
+	transform: scale(.5);
 }
 
 .card .description::before, .card .description::after {
 	font-family: 'Elements';
-	font-size: 256px;
+	font-size: 512px;
 	display: block;
 	position: absolute;
     width: 100%;
-	margin-left: -20px;
-	margin-top: -12px;
+	margin-left: -40px;
+	margin-top: -24px;
 	color: var(--extra-base-color);
 	opacity: .6;
 }
@@ -237,13 +240,13 @@
     content: "'";
     height: 100%;
     top: 0px;
-    top: 12px;
+    top: 24px;
     overflow: hidden;
-	border-radius: 0 0 30px 30px;
+	border-radius: 0 0 60px 60px;
 }
 .card .description::after {
 	content: '%';
-	bottom: -61.5px;
+	bottom: -125px;
 }
 
 .card.lord .description::before, .card.lord .description::after {
@@ -252,9 +255,9 @@
 
 
 .card .description p{
-	min-height: 25px;
+	min-height: 50px;
 	text-indent: 0.5em;
-	font-size: 14px;
+	font-size: 28px;
 	font-family: ZhunYuan;
 	position: relative;
 	z-index: 5;
@@ -266,46 +269,53 @@
 }
 
 .card .description-tiny p{
-	font-size: 10px;
+	font-size: 20px;
 }
 .card .description-small p{
-	font-size: 12px;
+	font-size: 24px;
 }
 .card .description-large p{
-	font-size: 16px;
+	font-size: 32px;
 }
 
 .card .description .pointer{
 	display: block;
 	position: absolute;
 	list-style: none;
-	background: url('images/overlay-skill.png') 0 0,
+	background: url('images/overlay-skill.png') 0 0 / 170px auto,
+		linear-gradient(var(--extra-base-color), var(--extra-base-color)) 10px 6px / 126px 50px,
+		linear-gradient(45deg, var(--extra-base-color) 27.5%, transparent 27.5%) 134px -22px / 52px 56px,
+		linear-gradient(var(--extra-base-color), var(--extra-base-color)) 128px 22px / 10px 34px,
+		linear-gradient(135deg, var(--extra-base-color) 26%, transparent 26%) 136px 32px / 60px 44px;
+		/* 
+		
 		linear-gradient(var(--extra-base-color), var(--extra-base-color)) 5px 3px / 63px 25px,
 		linear-gradient(45deg, var(--extra-base-color) 27.5%, transparent 27.5%) 67px -11px / 26px 28px,
 		linear-gradient(var(--extra-base-color), var(--extra-base-color)) 64px 11px / 5px 17px,
 		linear-gradient(135deg, var(--extra-base-color) 26%, transparent 26%) 68px 16px / 30px 22px;
+		*/
 	background-repeat: no-repeat;
-	padding-left: 18px;
-	padding-top: 2px;
-	width: 70px;
-	height: 35px;
-	font-size: 22px;
-	line-height: 25px;
+	padding-left: 36px;
+	padding-top: 4px;
+	width: 140px;
+	height: 70px;
+	font-size: 44px;
+	line-height: 50px;
 	font-family: LiShu;
 	font-weight: bold;
-	left: -59px;
-	margin-top: -8px;
+	left: -118px;
+	margin-top: -16px;
 	z-index: 6;
 }
 .card .description .pointer[length='3'] {
-	font-size: 19px;
+	font-size: 38px;
 	letter-spacing: -.1em;
-	padding-left: 13px;
+	padding-left: 26px;
 }
 .card .description .pointer[length='4'] {
-	font-size: 16px;
+	font-size: 32px;
 	letter-spacing: -.2em;
-	padding-left: 12px;
+	padding-left: 24px;
 }
 .card .description .pointer::before {
 	/* content: '$'; */
@@ -319,20 +329,32 @@
 	left: 4px;
 	top: -6px;
 }
+.card .description .pointer.wake{
+	background: url('images/overlay-skill.png') 0 -72px / 170px auto,
+		linear-gradient(var(--extra-base-color), var(--extra-base-color)) 10px 6px / 126px 50px,
+		linear-gradient(45deg, var(--extra-base-color) 27.5%, transparent 27.5%) 134px -22px / 52px 56px,
+		linear-gradient(var(--extra-base-color), var(--extra-base-color)) 128px 22px / 10px 34px,
+		linear-gradient(135deg, var(--extra-base-color) 26%, transparent 26%) 136px 32px / 60px 44px;
+	background-repeat: no-repeat;
+	color: white;
+	font-weight: normal;
+}
 
 .card .footer {
 	left: 91px;
 	bottom: 23px;
-	width: 264px;
-	height: 8px;
-	font-size: 9px;
+	width: 528px;
+	height: 16px;
+	font-size: 18px;
 	font-family: SimSun;
+	transform-origin: 0 100%;
+	transform: scale(.5);
+	line-height: 16px;
 }
 .card .footer label {
 	position: static;
 	left: 0px;
 	top: 0px;
-	float: left;
 }
 
 .card .footer .index {
@@ -353,7 +375,7 @@
     background-image: -webkit-linear-gradient(white 0%, var(--extra-edge-color) 100%);
 }
 .card .frame .custom-kingdom::before {
-	content: attr(value);
+	/*content: attr(value);*/
 	position: absolute;
 	width: 100%;
     background-image: inherit;

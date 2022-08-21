@@ -137,46 +137,49 @@
 
 
 .card .frame .description {
-	left: 111px;
+	/* left: 111px; */
 	right: 38px;
 	bottom: 39px;
-	min-height: 108px;
-	padding: 4px 4px 20px;
+	width: 564px;
+	min-height: 216px;
+	padding: 8px 8px 40px;
 	z-index: 2;
 	background-color: #6392C29A;
-	border-radius: 4px;
+	border-radius: 8px;
 	font-family: Microsoft YaHei;
-	font-size: 12px;
-	line-height: 18px;
+	font-size: 24px;
+	line-height: 36px;
 	color: white;
+	transform-origin: right bottom;
+	transform: scale(0.5);
 }
 .card .frame .description-large {
-	font-size: 14px;
+	font-size: 28px;
 }
 .card .frame .description-small {
-	font-size: 11px;
-	line-height: 12px;
+	font-size: 22px;
+	line-height: 24px;
 }
 .card .frame .description-tiny {
-	font-size: 10px;
-	line-height: 12px;
+	font-size: 20px;
+	line-height: 24px;
 }
 
 .card .frame .description .pointer {
 	display: inline-block;
 	float: left;
-	background: url('images/skill.png') center;
-	width: 70px;
-	height: 34px;
-	font-size: 20px;
+	background: url('images/skill.png') center / auto 72px;
+	width: 140px;
+	height: 68px;
+	font-size: 40px;
 	font-family: LiBian;
 	font-weight: bold;
 	color: white;
-	line-height: 34px;
+	line-height: 68px;
 	text-align: center;
 }
 .card .frame .description p {
-	min-height: 34px;
+	min-height: 68px;
 }
 
 .card .frame .description p.quote {
@@ -191,12 +194,15 @@
 
 
 .card .footer {
-	left: 160px;
+	/*left: 160px; */
 	bottom: 40px;
 	right: 40px;
-	font-size: 9px;
+	width: 478px;
+	font-size: 18px;
 	font-family: Microsoft YaHei;
 	z-index: 5;
+	transform-origin: right bottom;
+	transform: scale(0.5);
 }
 .card .footer label {
 	position: static;
@@ -211,7 +217,7 @@
 	top: auto;
 	right: 0;
 	bottom: 0;
-	font-size: 12px;
+	font-size: 24px;
 }
 .card .footer .illustrator::before {
 	content: 'Illustration: ';

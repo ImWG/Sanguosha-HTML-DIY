@@ -162,44 +162,46 @@
 
 .card .description {
 	left: 75px;
-	width: 221px;
+	width: 442px;
 	bottom: 29px;
 	margin-bottom: 12px;
-	padding-left: 20px;
-	padding-right: 12px;
-	padding-top: 7px;
-	padding-bottom: 8px;
-	background: url('images/wei-skill-middle.png') center repeat-y;
-	border-radius: 31px;
-	min-height: 62px;
+	padding-left: 40px;
+	padding-right: 24px;
+	padding-top: 14px;
+	padding-bottom: 16px;
+	background: url('images/wei-skill-middle.png') center / 522px 100% repeat-y;
+	border-radius: 62px;
+	min-height: 124px;
+	transform-origin: left bottom;
+	transform: scale(0.5);
 }
 
 .card .description::before {
 	content: '';
 	display: block;
 	position: absolute;
-	background: url('images/wei-skill-up.png') no-repeat 50% 100%;
+	background: url('images/wei-skill-up.png') no-repeat 50% 100% / 522px auto;
 	width: 100%;
-	height: 41px;
-	top: -9px;
-	margin-left: -20px;
+	height: 82px;
+	top: -19px;
+	margin-left: -40px;
 }
 
 .card .description::after {
 	content: '';
 	display: block;
 	position: absolute;
-	background: url('images/wei-skill-down.png') no-repeat 50% 100%;
+	background: url('images/wei-skill-down.png') no-repeat 50% 100% / 522px auto;
 	width: 100%;
-	height: 41px;
-	bottom: -9.5px;
-	margin-left: -20px;
+	height: 82px;
+	bottom: -19px;
+	margin-left: -40px;
 }
 
 .card .description p{
-	min-height: 20px;
-	text-indent: 12px;
-	font-size: 12px;
+	min-height: 40px;
+	text-indent: 24px;
+	font-size: 24px;
 	font-family: ZhunYuan;
 }
 .card .description p.quote {
@@ -210,44 +212,44 @@
 }
 
 .card .description-tiny p{
-	font-size: 9px;
+	font-size: 18px;
 	text-indent: 0px;
-	padding-left: 12px;
+	padding-left: 24px;
 }
 .card .description-small p{
-	font-size: 10px;
+	font-size: 20px;
 }
 .card .description-large p{
-	font-size: 14px;
+	font-size: 28px;
 }
 
 .card .description .pointer{
 	display: block;
 	position: absolute;
 	list-style: none;
-	background: url('images/wei-skill.png') no-repeat 0px 0px;
-	padding-left: 10px;
-	padding-top: 2px;
-	width: 80px;
-	height: 37px;
-	font-size: 21px;
+	background: url('images/wei-skill.png') no-repeat 0px 0px / 156px auto;
+	padding-left: 20px;
+	padding-top: 3px;
+	width: 160px;
+	height: 74px;
+	font-size: 42px;
 	font-family: LiShu;
-	min-height: 24px;
-	left: -38px;
-	margin-top: -8px;
+	min-height: 48px;
+	left: -76px;
+	margin-top: -16px;
 	z-index: 2;
 }
 .card .description .pointer[length='3'] {
-	font-size: 16px;
-	line-height: 22px;
+	font-size: 32px;
+	line-height: 44px;
 	letter-spacing: -.1em;
-	padding-left: 9px;
+	padding-left: 18px;
 }
 .card .description .pointer[length='4'] {
-	font-size: 14px;
-	line-height: 22px;
+	font-size: 28px;
+	line-height: 44px;
 	letter-spacing: -.2em;
-	padding-left: 8px;
+	padding-left: 16px;
 }
 
 .card .footer {
@@ -264,7 +266,7 @@
 	left: 0px;
 	top: 0px;
 	float: left;
-	line-height: 16px;
+	/* line-height: 16px; */
 }
 
 .card .footer .index {
