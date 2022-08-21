@@ -67,15 +67,15 @@
 /* New Fonts */
 @font-face {
 	font-family: 'XingKai';
-	src: url('../fonts/STXINGKA.WOFF');
+	src: url('../fonts/STXINGKA.WOFF') format('woff'), url('../fonts/STXINGKA.TTF') format('truetype');
 }
 @font-face { /* Alias */
 	font-family: 'STXingKai';
-	src: url('../fonts/STXINGKA.WOFF');
+	src: url('../fonts/STXINGKA.WOFF') format('woff'), url('../fonts/STXINGKA.TTF') format('truetype');
 }
 @font-face {
 	font-family: 'JMMaoCaoXing'; /* 自定义字体名称 */
-	src: url('../fonts/jmmao.WOFF');
+	src: url('../fonts/jmmao.WOFF') format('woff'), url('../fonts/jmmao.TTF') format('truetype');
 }
 @font-face {
 	font-family: 'JMMaoCaoXingEx'; /* 自定义字体名称 */
@@ -83,31 +83,31 @@
 }
 @font-face {
 	font-family: 'DFPNewChuan-B5';
-	src: url('../fonts/DFNewChua.WOFF');
+	src: url('../fonts/DFNewChua.WOFF') format('woff'), url('../fonts/DFNewChua.TTF') format('truetype');
 }
 @font-face {
 	font-family: 'ZhunYuan';
-	src: url('../fonts/RuiYunZhunYuan.WOFF');
+	src: url('../fonts/RuiYunZhunYuan.WOFF') format('woff'), url('../fonts/RuiYunZhunYuan.TTF') format('truetype');
 }
 @font-face {
 	font-family: 'JingDianFanJiaoLi';
-	src: url('../fonts/JingDianFanJiaoLi.WOFF');
+	src: url('../fonts/JingDianFanJiaoLi.WOFF') format('woff'), url('../fonts/JingDianFanJiaoLi.TTF') format('truetype');
 }
 @font-face {
 	font-family: 'LiBian';
-	src: url('../fonts/FZLiBian.WOFF');
+	src: url('../fonts/FZLiBian.WOFF') format('woff'), url('../fonts/FZLiBian.TTF') format('truetype');
 }
 @font-face {
 	font-family: 'FZKaTong';
-	src: url('../fonts/FZKaTong.WOFF');
+	src: url('../fonts/FZKaTong.WOFF') format('woff'), url('../fonts/FZKaTong.TTF') format('truetype');
 }
 @font-face {
 	font-family: 'FZShaoer';
-	src: url('../fonts/FZShaoer.WOFF');
+	src: url('../fonts/FZShaoer.WOFF') format('woff'), url('../fonts/FZShaoer.TTF') format('truetype');
 }
 @font-face {
 	font-family: 'HKWaWaW5';
-	src: url('../fonts/HKWaWaW5.WOFF');
+	src: url('../fonts/HKWaWaW5.WOFF') format('woff'), url('../fonts/HKWaWaW5.TTF') format('truetype');
 }
 @font-face {
 	font-family: 'FZQingKeBenYueSong';
@@ -119,7 +119,7 @@
 /* Special */
 @font-face { /* Symbol Suits */
 	font-family: 'SymbolSuit';
-	src: url('../fonts/suit.woff');
+	src: url('../fonts/suit.woff') format('woff');
 }
 @font-face { /* Symbol "&" */
 	font-family: 'SymbolAnd';

@@ -189,9 +189,22 @@ function loadTemplate(template){
 				var key = extra[i + 1];
 				var type = extraTypes[i >> 1] || 'text';
 				var value = defaults[i >> 1] ? "value='" + defaults[i >> 1] + "'" : '';
-				extraHTML += "<label for='panel-x-" + key + "'>" + extra[i]
-					+ "：</label><input id='panel-x-" + key + "' class='short' type='" + type
-					+ "'" + value + "/>";
+				if (type == 'enum') {
+					var values = style.getPropertyValue('--extra-' + key + '-values').trim().split(/\s*,\s*/);
+					var nameVar = style.getPropertyValue('--extra-' + key + '-names');
+					var names = nameVar ? nameVar.trim().split(/\s*,\s*/) : values;
+					var options = [];
+					for (var j = 0; j < values.length; ++j) {
+						options.push('<option value="' + values[j] + '">' + names[j] + '</option>');
+					}
+					extraHTML += "<label for='panel-x-" + key + "'>" + extra[i]
+						+ "：</label><select id='panel-x-" + key + "' class='short' " + value + ">'"
+						+ options.join('') + "'</select>";
+				}else{
+					extraHTML += "<label for='panel-x-" + key + "'>" + extra[i]
+						+ "：</label><input id='panel-x-" + key + "' class='short' type='" + type
+						+ "'" + value + "/>";
+				}
 				EXTRA_SEGMENTS.push(key);
 			}
 		}
@@ -265,6 +278,7 @@ function createCard(object){
 	if (nickname.length > 4){
 		nicknameElement.classList.add('nickname-small');
 	}
+	card.setAttribute('nickname', nickname);
 	
 	var nameElement = card.getElementsByClassName('name')[0];
 	var name = typeof(object.name) == 'object' ? object.name.text : object.name;
@@ -277,6 +291,7 @@ function createCard(object){
 	if (object.name.font){
 		nameElement.style.fontFamily = object.name.font;
 	}
+	card.setAttribute('name', name);
 	
 	var hp = object.hitpoints;
 	var drained = 0;
