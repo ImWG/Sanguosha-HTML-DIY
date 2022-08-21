@@ -5,11 +5,18 @@ var currentItem = {};
 var PREVENT_CORS_MODE = false;
 
 window.onload = function() {
+	if (location.href.match('content://') && !document.querySelector('[path="res/common.css"]')) {
+		alert('您正在使用content://协议访问该页面，请改用file:///。')
+	}
 	document.getElementById('sel-template').innerHTML = 
 		TEMPLATES.map(function(e) {
 			return '<option value="' + e.path + '">' + e.name + '</option>';
 		}).join('');
 	loadTemplate(TEMPLATES[0].path);
+	if (PREVENT_CORS_MODE) {
+		convertCommonStyle();
+		loadFontPackage();
+	}
 }
 
 function addSkill(){
@@ -136,8 +143,15 @@ function generateFromInput(){
 }
 
 function loadTemplate(template){	
+	var templatePath = template + '/style.css';
 	var cssElement = document.getElementById('meta-template-css');
-	cssElement.href = 'templates/' + template + '/style.css';
+	
+	var bufferedElement = document.querySelector('[path="' + templatePath + '"]');
+	if (bufferedElement) {
+		cssElement.href = URL.createObjectURL(new Blob([bufferedElement.innerText]));
+	}else {
+		cssElement.href = 'templates/' + templatePath;
+	}
 	
 	var onload = function(){
 		var style = window.getComputedStyle(document.getElementsByClassName('card')[0]);
@@ -667,9 +681,18 @@ function createImage() {
 			for (var i = 0; i < subElementStyles.length; ++i) {
 				var style = subElementStyles[i];
 				var textShadow = style.textShadow;
-				if (textShadow) {
+				if (textShadow && textShadow != 'none') {
 					subElements[i].style.textShadow = 
-						textShadow.replace(/[\d\.\-]+(px|em)/g, 'calc\(' + scale + ' * $&\)');
+						textShadow.replace( // 0 will be converted to 0px automatically
+							/([\d\.\-]+(?:px|em|ex|ch|rem))\s+([\d\.\-]+(?:px|em|ex|ch|rem))\s*([\d\.\-]+(?:px|em|ex|ch|rem))?/g,
+							function(m, x, y, z) {
+								var s = 'calc\(' + scale + ' * ' + x + '\) calc\(' + scale + ' * ' + y + '\) ';
+								if (z) {
+									s += 'calc\(' + scale * window.devicePixelRatio + ' * ' + z + '\) ';
+								}
+								return s;
+							}
+						);
 				}
 				if (style.writingMode == 'vertical-rl') {
 					convertVerticalText(subElements[i]);
@@ -741,7 +764,9 @@ function createImage() {
 				output.innerHTML = '';
 				try {
 					var image = new Image();
-					image.src = canvas.toDataURL();
+					canvas.toBlob(function(blob) {
+						image.src = URL.createObjectURL(blob);
+					});
 					image.height = canvas.height / window.devicePixelRatio;
 					canvas = image;
 					image.onclick = function() {
@@ -1032,4 +1057,67 @@ function loadMobileSrcs(style) { // 用于移动版的解包
 		++i;
 	}
 	
+}
+
+function convertCommonStyle() {
+	var commonStyle = document.querySelector('[path=".css"]');
+	if (commonStyle) {
+		// TODO
+	}
+}
+
+
+function loadFontPackage() {
+	var cssElement = document.querySelector('[path="res/common.css"]');
+	if (cssElement) {
+		alert('您需要加载字体包（pak文件）才能正确生成图片。点击页面以进行该操作。');
+		var face = document.createElement('div');
+		face.setAttribute('style', 'position: fixed; z-index: 1000; background-color: white; opacity: 0.5; left: 0; right: 0; top: 0; bottom: 0;');
+		document.body.appendChild(face);
+		
+		face.onclick = function() {
+			var fileInput = document.createElement('input');
+			fileInput.type = 'file';
+			fileInput.onchange = function() {
+				var file = this.files[0];
+				if (file) {
+					var fonts = [];
+					var fr = new FileReader();
+					fr.onloadend = function(){
+						var content = this.result;
+						var length = content.byteLength;
+						var offset = 0;
+						while (offset < length) {
+							var l = new Uint32Array(content.slice(offset, offset + 4))[0];
+							offset += 4;
+							var n = Array.prototype.map.call(
+								new Uint8Array(content.slice(offset, offset + l)),
+								function(e) {
+									return String.fromCharCode(e);
+								}).join('');
+							offset += l;
+							var k = new Uint32Array(content.slice(offset, offset + 4))[0];
+							offset += 4;
+							var f = content.slice(offset, offset + k);
+							offset += k;
+							fonts.push({name: n.toLowerCase(), content: URL.createObjectURL(new Blob([f]))});
+						}
+						if (fonts.length > 0) {
+							cssElement.innerHTML = cssElement.innerHTML.replace(/\.\.\/fonts\/[^)'"]+/g, function(r) {
+								var path = r.toLowerCase();
+								for (var i = fonts.length - 1; i >= 0; --i ){
+									if (fonts[i].name == path) {
+										return fonts[i].content;
+									}
+								}
+							});
+							document.body.removeChild(face);
+						}
+					}
+					fr.readAsArrayBuffer(file);
+				}
+			}
+			fileInput.click();
+		}
+	}
 }
