@@ -717,9 +717,14 @@ function createImage() {
 			var promise = Promise.resolve();
 			
 			result.style.transform = '';
+			document.body.parentElement.style.width = '10000px';
 			for (var i = 0; i < subElementStyles.length; ++i) { // 制造渐变文字
 				if (subElementStyles[i].webkitBackgroundClip == 'text') {
 					(function(element) {
+						var computedStyle = getComputedStyle(element);
+						if (computedStyle.getPropertyValue('--value')) {
+							element.innerHTML = computedStyle.getPropertyValue('--value');
+						}
 						if (!element.innerHTML)  return;
 							
 						var textShadow = element.style.textShadow;
@@ -767,7 +772,6 @@ function createImage() {
 			
 			promise.then(function() {
 				result.style.transform = transformZoomed;
-				document.body.parentElement.style.width = '10000px';
 				return html2canvas(result, {
 					allowTaint: true,
 					useCORS: true,
@@ -777,19 +781,25 @@ function createImage() {
 				imageCreating = false;
 				var output = document.getElementById('output');
 				output.innerHTML = '';
+				var outputElement = canvas;
 				try {
 					var image = new Image();
-					canvas.toBlob(function(blob) {
-						image.src = URL.createObjectURL(blob);
-					});
+					image.src = canvas.toDataURL();
 					image.height = canvas.height / window.devicePixelRatio;
-					canvas = image;
+					outputElement = image;
 					image.onclick = function() {
 						if (confirm('下载图片吗？')) {
 							var a = document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
-							a.href = image.src;
 							a.download = currentItem.nickname + '-' + currentItem.name + '.png';
-							a.click();
+							if (navigator.userAgent.match('MQQBrowser')) { // QQ浏览器不支持Blob图片
+								a.href = image.src;
+								a.click();
+							}else{
+								canvas.toBlob(function(blob) {
+									a.href = URL.createObjectURL(blob);
+									a.click();
+								});
+							}
 						}
 					}
 				}catch(e) {
@@ -814,7 +824,7 @@ function createImage() {
 					}
 				}
 				
-				output.appendChild(canvas);
+				output.appendChild(outputElement);
 				output.style.display = '';
 				result.style.transform = transform;
 				card0.style.display = '';
@@ -1078,6 +1088,51 @@ function convertCommonStyle() {
 	var commonStyle = document.querySelector('[path=".css"]');
 	if (commonStyle) {
 		// TODO
+	}
+}
+
+
+function setContainImageSize() {
+	var card = document.querySelector('#result .card');
+	if (!card) return;
+	
+	var images = card.getElementsByClassName('illustration');
+	var image = images[0].children[0];
+	if (image && image.naturalWidth) {
+		var naturalWidth = image.naturalWidth;
+		var naturalHeight = image.naturalHeight;
+		var drag = card.drag;
+		var coordinates;
+		var coordVar = getComputedStyle(card).getPropertyValue('--illustration-coordinates');
+		if (coordVar) {
+			coordinates = coordVar.trim().split(/\s+/).map(function(e) {
+				return parseInt(e);
+			});
+		}else{
+			coordinates = [0, 0, card.clientWidth, card.clientHeight];
+		}
+		if (drag) {
+			var scale = Math.max(coordinates[2] / image.naturalWidth, coordinates[3] / image.naturalHeight);
+			var width = image.naturalWidth * scale;
+			var height = image.naturalHeight * scale;
+			var left = (coordinates[2] - width) / 2 + coordinates[0];
+			var top = (coordinates[3] - height) / 2 + coordinates[1];
+			image.style.width = width + 'px';
+			image.style.height = height + 'px';
+			image.style.left = left + 'px';
+			image.style.top = top + 'px';
+			var image2 = images[1].children[0];
+			if (image2) {
+				image2.style.width = image.style.width;
+				image2.style.height = image.style.height;
+				image2.style.left = image.style.left;
+				image2.style.top = image.style.top;
+			}
+			drag.x = left;
+			drag.y = top;
+			drag.factor = scale;
+			imageAdjustFeedback(image);
+		}
 	}
 }
 

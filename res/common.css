@@ -270,6 +270,7 @@
 }
 .card ._use-gradient::after {
 	content: attr(value);
+	content: var(--value, attr(value));
 	position: absolute;
 	left: 0;
 	top: 0;

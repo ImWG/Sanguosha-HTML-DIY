@@ -21,7 +21,8 @@
 			<input id='panel-illustration' class='short' type='file' onchange='getImagePath();' title='点击以从文件夹选择图片。' /></p>
 			<p><label for='panel-illustration-online-front'>出框图片：</label><input id='panel-illustration-online-front' title='可以将路径粘贴到这里。' />
 			<input id='panel-illustration-front' class='short' type='file' onchange='getImagePathFront();' title='点击以从文件夹选择图片。' /></p>
-			<p><label for='panel-illustration-adjust'>调整参数：</label><input id='panel-illustration-adjust' class='short' title='图片的坐标和缩放比例。' />
+			<p><label for='panel-illustration-adjust'>调整参数：</label><input id='panel-illustration-adjust' class='short' title='图片的坐标和缩放比例。' /><button id="btn-autoscale" type="button"
+					onclick="setContainImageSize()" title="自动调整尺寸到覆盖整个卡牌。">自动</button>
 				<label for='panel-style'>样式：</label><select id='panel-style' class='short' value=''></select>
 			</p>
 			<p><label for='panel-nickname'>　　称号：</label><input id='panel-nickname' class='short' value='一名角色' />
@@ -87,7 +88,7 @@ XXX 001</textarea></p>
 			<option value='-1' class='panel-hint'>视觉尺寸</option>
 			<option value='-2' class='panel-hint'>最大可裁剪比例</option>
 		</select>
-		<input type='button' value='打开裁剪工具' class='short mobile-only' style='margin-top: 0.5em;' onclick='showTrimPanel(true)' />
+		<input type='button' value='打开裁剪工具' class='short -mobile-only' style='display: none; margin-top: 0.5em;' onclick='showTrimPanel(true)' />
 		<label id='panel-hint-balloon' class='panel-hint' style='display: none; left: -100%;'></label>
 	</div>
 	
@@ -156,7 +157,7 @@ XXX 001</textarea></p>
 		overflow-y: hidden;
 	}
 	#panel::before {
-		content: '三国杀卡牌制作器\A 0813 By 开不了车';
+		content: '三国杀卡牌制作器\A 0828 By 开不了车';
 		display: block;
 		white-space: pre;
 		position: fixed;
@@ -174,6 +175,7 @@ XXX 001</textarea></p>
 		margin-right: -8px;
 		padding-right: 8px;
 		overflow: auto;
+		position: relative;
 	}
 	
 	#panel *{
@@ -217,7 +219,11 @@ XXX 001</textarea></p>
 	}
 	#panel-skill-list textarea {
 		width: calc(100% - 160px);
-	}	
+	}
+	#panel-skill-list textarea:first-line {
+		font-weight: bold;
+		color: blue;
+	}
 	
 	#result{
 		position: absolute;
@@ -296,6 +302,13 @@ XXX 001</textarea></p>
 		color: white;
 	}
 	
+	#btn-autoscale {
+		position: absolute;
+		margin-left: -3em;
+		width: 3em;
+		white-space: pre;
+	}
+	
 	.mobile-only {
 		display: none;
 	}
@@ -335,5 +348,18 @@ XXX 001</textarea></p>
 <script src='res/html2canvas.min.js'></script>
 <script src='res/templates.js'></script>
 <script src='res/diy.js'></script>
+
+<script type="text/javascript">
+	if (typeof currentItem === 'undefined') {
+		if (navigator.userAgent.match('Android')) {
+			alert('未找到diy.js，请检查文件的完整性。\n您可能在使用打开临时文件的方式。'
+				+ '如果是Android手机，请使用file://协议来访问：在文件管理中长按diy.html查看路径，'
+				+ '然后用file:///storage/emulated/0/加上您当前的目录。例如目录为内部存储/diy/diy.html，'
+				+ '则浏览器打开的URL为file:///storage/emulated/0/diy/diy.html。');
+		}else{
+			alert('未找到diy.js，请检查文件的完整性。');
+		}
+	}
+</script>
 
 </html>
