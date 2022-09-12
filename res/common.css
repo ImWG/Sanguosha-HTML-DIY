@@ -113,6 +113,10 @@
 	font-family: 'FZQingKeBenYueSong';
 	src: url('../fonts/FZQingKeBenYueSong.TTF');
 }
+@font-face {
+	font-family: 'BaiZhouRenZhe';
+	src: url('../fonts/BaiZhouRenZhe.WOFF') format('woff'), url('../fonts/BaiZhouRenZhe.TTF') format('truetype');
+}
 
 
 

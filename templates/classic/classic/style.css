@@ -42,9 +42,9 @@
 	z-index: 11;
 }
 .card .frame .custom-kingdom {
-	font-family: 'JMMaoCaoXingEx', 'JMMaoCaoXing', 'STXingKai';
+	font-family: 'BaiZhouRenZhe', 'STXingKai', 'JMMaoCaoXingEx', 'JMMaoCaoXing';
 	font-size: 64px;
-	font-weight: bold;
+	line-height: 64px;
 	left: 2px;
 	top: 20px;
 	min-width: 104px;
@@ -138,26 +138,17 @@
 			2px 0px #000, -2px 0px #000, 0px -2px #000, 0px 2px #000,
 			2px 1px #000, -2px 1px #000, 1px -2px #000, 1px 2px #000,
 			2px -1px #000, -2px -1px #000, -1px -2px #000, -1px 2px #000,
-			2px 2px white, -2px -2px white, 2px -2px white, -2px 2px white, 
-			3px 0px white, -3px 0px white, 0px -3px white, 0px 3px white,
-			3px 1.2px white, -3px 1.2px white, 1.2px -3px white, 1.2px 3px white,
-			3px -1.2px white, -3px -1.2px white, -1.2px -3px white, -1.2px 3px white,
-			-3px 3px 3px black, -3px 3px 3px black;
+			2px 2px currentColor, -2px -2px currentColor, 2px -2px currentColor, -2px 2px currentColor, 
+			3px 0px currentColor, -3px 0px currentColor, 0px -3px currentColor, 0px 3px currentColor,
+			3px 1.2px currentColor, -3px 1.2px currentColor, 1.2px -3px currentColor, 1.2px 3px currentColor,
+			3px -1.2px currentColor, -3px -1.2px currentColor, -1.2px -3px currentColor, -1.2px 3px currentColor,
+			3px 3px 3px black, 3px 3px 3px black;
 	font-family: 'SymbolAnd', 'JMMaoCaoXingEx', 'JMMaoCaoXing', 'STXingKai';
 	font-size: 54px;
 	writing-mode: tb-rl;
 	letter-spacing: 0.1em;
 }
 .card.on-rendering .name { /* For Rendering */
-	text-shadow: 1.5px 1.5px #000, -1.5px -1.5px #000, 1.5px -1.5px #000, -1.5px 1.5px #000, 
-			2px 0px #000, -2px 0px #000, 0px -2px #000, 0px 2px #000,
-			2px 1px #000, -2px 1px #000, 1px -2px #000, 1px 2px #000,
-			2px -1px #000, -2px -1px #000, -1px -2px #000, -1px 2px #000,
-			2px 2px white, -2px -2px white, 2px -2px white, -2px 2px white, 
-			3px 0px white, -3px 0px white, 0px -3px white, 0px 3px white,
-			3px 1.2px white, -3px 1.2px white, 1.2px -3px white, 1.2px 3px white,
-			3px -1.2px white, -3px -1.2px white, -1.2px -3px white, -1.2px 3px white,
-			3px 3px 3px black, 3px 3px 3px black;
 }
 .card .name[length='2'] {
 	top: 250px;
@@ -252,7 +243,7 @@
 	font-size: 44px;
 	line-height: 50px;
 	font-family: LiShu;
-	font-weight: bold;
+	font-weight: normal;
 	left: -118px;
 	margin-top: -16px;
 	z-index: 6;
@@ -270,7 +261,6 @@
 .card .description .pointer.wake {
 	background-position-y: -404px;
 	color: white;
-	font-weight: normal;
 	text-shadow: 0 -1px black;
 }
 

@@ -160,6 +160,7 @@
 
 .card .frame .custom-kingdom {
 	font-size: 80px;
+	line-height: 80px;
 	z-index: 5;
 	font-family: 'JMMaoCaoXingEx', 'JMMaoCaoXing', 'STXingKai';
 	width: 120px;
@@ -258,7 +259,7 @@
 }
 
 .card .description p {
-	font-family: HeiTi;
+	font-family: ZhunYuan;
 	min-height: 34px;
 }
 .card .description p.quote {
@@ -522,8 +523,8 @@
 }
 
 .card.god .frame .footer {
-	left: 80px;
-	right: 80px;
+	left: -120px;
+	right: -120px;
 	color: white;
 }
 

@@ -627,7 +627,7 @@ function exportForm(){
 			.getElementsByClassName('panel-skill-tags')[0].getElementsByTagName('input');
 		var tags = skill.tag || [];
 		for (var j = 0; j < SKILL_TAGS.length; ++j) {
-			tagElements[j].checked = tags.indexOf(SKILL_TAGS[i]) >= 0;
+			tagElements[j].checked = tags.indexOf(SKILL_TAGS[j]) >= 0;
 		}
 	}
 	while (document.getElementById('panel-skill-' + skills.length)){
@@ -1096,14 +1096,20 @@ function setContainImageSize() {
 	var card = document.querySelector('#result .card');
 	if (!card) return;
 	
-	var images = card.getElementsByClassName('illustration');
-	var image = images[0].children[0];
+	var imageContainers = card.getElementsByClassName('illustration');
+	var image = imageContainers[0].children[0];
+	var image2 = imageContainers[1].children[0];
 	if (image && image.naturalWidth) {
 		var naturalWidth = image.naturalWidth;
 		var naturalHeight = image.naturalHeight;
 		var drag = card.drag;
 		var coordinates;
-		var coordVar = getComputedStyle(card).getPropertyValue('--illustration-coordinates');
+		var coordVar;
+		if (image2 && image2.getAttribute('src')) {
+			coordVar = getComputedStyle(card).getPropertyValue('--illustration-front-coordinates');
+		}else{
+			coordVar = getComputedStyle(card).getPropertyValue('--illustration-coordinates');
+		}
 		if (coordVar) {
 			coordinates = coordVar.trim().split(/\s+/).map(function(e) {
 				return parseInt(e);
@@ -1121,7 +1127,6 @@ function setContainImageSize() {
 			image.style.height = height + 'px';
 			image.style.left = left + 'px';
 			image.style.top = top + 'px';
-			var image2 = images[1].children[0];
 			if (image2) {
 				image2.style.width = image.style.width;
 				image2.style.height = image.style.height;

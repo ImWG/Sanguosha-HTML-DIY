@@ -8,6 +8,7 @@
 	font-family: 'FZQingKeBenYueSong';
 	--variants: 魏, wei, 蜀, shu, 吴, wu, 群, qun;
 	--extra-segments: 格言, motto;
+	--illustration-coordinates: 140 0 549 661;
 }
 
 .card .frame{

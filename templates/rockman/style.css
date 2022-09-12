@@ -8,6 +8,7 @@
 	height: 771px;
 	--variants: 原版, default, 原版（男）, default male, 原版（女）, default female,
 		主公, default lord, 主公（男）, default lord male, 主公（女）, default lord female;
+	--illustration-coordinates: 107 75 389 652;
 }
 
 .card .frame{
@@ -29,7 +30,7 @@
     width: 120px;
     height: 96px;
     text-align: center;
-	font-family: XingKai;
+	font-family: KaiTi; /*XingKai;*/
 	font-size: 96px;
 	line-height: 96px;
 	left: 25px;
