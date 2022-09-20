@@ -18,6 +18,7 @@
 		经典魏主公, wei lord old, 经典蜀主公, shu lord old, 经典吴主公, wu lord old,
 		经典群主公, qun lord old, 经典晋主公, jin lord old, 经典晋主公（青）, jina lord old;*/
 	
+	--illustration-coordinates: 82 0 478 806;
 	--extra-segments: 体力样式, hp-style;
 	--extra-segment-types: enum;
 	--extra-hp-style-values: default, ink, old;
@@ -463,6 +464,9 @@
 }
 
 /* God! */
+.card.god {
+	--illustration-coordinates: 0 0 560 806;
+}
 .card.god .frame::before {
 	height: 141px;
 	background: url('images/god.png') no-repeat 12px 0 / 102px auto;

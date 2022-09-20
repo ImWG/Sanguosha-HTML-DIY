@@ -117,6 +117,10 @@
 	font-family: 'BaiZhouRenZhe';
 	src: url('../fonts/BaiZhouRenZhe.WOFF') format('woff'), url('../fonts/BaiZhouRenZhe.TTF') format('truetype');
 }
+@font-face {
+	font-family: 'JingDianFanFangZhuan';
+	src: url('../fonts/JingDianFanFangZhuan.WOFF') format('woff'), url('../fonts/JingDianFanFangZhuan.TTF') format('truetype');
+}
 
 
 
@@ -290,7 +294,7 @@
 	content: none;
 }
 .card .frame ._use-gradient[lang='emoji'] {
-    -webkit-text-fill-color: white !important;
-    -webkit-background-clip: content-box !important;
-    background-image: none !important;
+    -webkit-text-fill-color: var(--gradient-emoji, white !important);
+    -webkit-background-clip: var(--gradient-emoji, content-box !important);
+    background-image: var(--gradient-emoji, none !important);
 }

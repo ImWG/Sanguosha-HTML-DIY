@@ -23,7 +23,7 @@ function addSkill(){
 	var skills = document.getElementById('panel-skill-list');
 	var node = document.createElement('div');
 	var length = skills.children.length;
-	node.innerHTML = '<label>　　技能：</label><textarea id="panel-skill-'+length+'" title="输入技能名与说明。第一行为技能名，第二行及以后是技能说明。"></textarea> <div class="panel-skill-tags" title="可以设置主公技、锁定技、限定技等特定样式。"><label><input type="checkbox">主</label><label> <input type="checkbox">锁</label><label><input type="checkbox">限</label> <label><input type="checkbox">觉</label></div>';
+	node.innerHTML = '<label>　　技能：</label><textarea id="panel-skill-'+length+'" title="输入技能名与说明。第一行为技能名，第二行及以后是技能说明。" onfocus="setTextToolbar(this)" onblur="setTextToolbar()"></textarea> <div class="panel-skill-tags" title="可以设置主公技、锁定技、限定技等特定样式。"><label><input type="checkbox">主</label><label> <input type="checkbox">锁</label><label><input type="checkbox">限</label> <label><input type="checkbox">觉</label></div>';
 	skills.appendChild(node);
 }
 function removeSkill(){
@@ -197,13 +197,13 @@ function loadTemplate(template){
 					for (var j = 0; j < values.length; ++j) {
 						options.push('<option value="' + values[j] + '">' + names[j] + '</option>');
 					}
-					extraHTML += "<label for='panel-x-" + key + "'>" + extra[i]
+					extraHTML += "<span><label for='panel-x-" + key + "'>" + extra[i]
 						+ "：</label><select id='panel-x-" + key + "' class='short' " + value + ">'"
-						+ options.join('') + "'</select>";
+						+ options.join('') + "'</select></span>";
 				}else{
-					extraHTML += "<label for='panel-x-" + key + "'>" + extra[i]
+					extraHTML += "<span><label for='panel-x-" + key + "'>" + extra[i]
 						+ "：</label><input id='panel-x-" + key + "' class='short' type='" + type
-						+ "'" + value + "/>";
+						+ "'" + value + "/></span>";
 				}
 				EXTRA_SEGMENTS.push(key);
 			}
@@ -772,6 +772,7 @@ function createImage() {
 			
 			promise.then(function() {
 				result.style.transform = transformZoomed;
+				result.style.setProperty('--output-scale', scale);
 				return html2canvas(result, {
 					allowTaint: true,
 					useCORS: true,
@@ -827,6 +828,7 @@ function createImage() {
 				output.appendChild(outputElement);
 				output.style.display = '';
 				result.style.transform = transform;
+				result.style.setProperty('--output-scale', '');
 				card0.style.display = '';
 				result.removeChild(card);
 				
@@ -901,6 +903,9 @@ function popupHintBalloon(event) {
 	var title;
 	while (!(title = target.title) && target.parentElement) {
 		target = target.parentElement;
+	}
+	if (target.parentElement && target.parentElement.id == 'textToolbar') {
+		return;
 	}
 	var hint = document.getElementById('panel-hint-balloon');
 	if (title) {
@@ -1194,5 +1199,44 @@ function loadFontPackage() {
 			}
 			fileInput.click();
 		}
+	}
+}
+
+var currentTextArea = null;
+var lastTextTimeout = null;
+function setTextToolbar(element) {
+	var hint = document.getElementById('textToolbar');
+	if (element) {
+		hint.style.opacity = '';
+		var offsetX = element.offsetLeft;
+		var offsetY = element.offsetTop;
+		hint.style.left = offsetX + 'px';
+		hint.style.top = offsetY + 'px';
+		hint.style.display = 'block';
+		currentTextArea = element;
+		clearTimeout(lastTextTimeout);
+	}else{
+		clearTimeout(lastTextTimeout);
+		lastTextTimeout = setTimeout(function() {
+			hint.style.display = '';
+			currentTextArea = null;
+		}, 200);
+	}
+}
+function toggleTagPairs(prefix, postfix) {
+	if (currentTextArea) {
+		var start = currentTextArea.selectionStart;
+		var end = currentTextArea.selectionEnd;
+		var prefixLength = prefix.length;
+		var postfixLength = postfix.length;
+		var text = currentTextArea.value.slice(start, end);
+		if (text.slice(0, prefixLength) == prefix && text.slice(-postfixLength) == postfix) {
+			currentTextArea.setRangeText(text.slice(prefixLength, -postfixLength), start, end);
+			currentTextArea.setSelectionRange(start, end - prefixLength - postfixLength);
+		}else{
+			currentTextArea.setRangeText(prefix + text + postfix, start, end);
+			currentTextArea.setSelectionRange(start, end + prefixLength + postfixLength);
+		}
+		currentTextArea.focus();
 	}
 }

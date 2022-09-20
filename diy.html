@@ -32,7 +32,7 @@
 					title='自定义的势力，不需要时可以留空。&#13;在卡牌中，该值用于表示花色。' /></p>
 			<span id='panel-skill-list'>
 				<div>
-					<label>　　技能：</label><textarea id='panel-skill-0' title='输入技能名与说明。第一行为技能名，第二行及以后是技能说明。'>怒气
+					<label>　　技能：</label><textarea id='panel-skill-0' title='输入技能名与说明。第一行为技能名，第二行及以后是技能说明。' onfocus="setTextToolbar(this)" onblur="setTextToolbar()">怒气
 <b>锁定技</b>。你的♥♦【杀】无使用距离和次数限制。</textarea>
 					<div class='panel-skill-tags' title='可以设置主公技、锁定技、限定技等特定样式。' >
 						<label><input type='checkbox'>主</label>
@@ -42,7 +42,7 @@
 					</div>
 				</div>
 				<div>
-					<label>　　技能：</label><textarea id='panel-skill-1' title='输入技能名与说明。第一行为技能名，第二行及以后是技能说明。'></textarea>
+					<label>　　技能：</label><textarea id='panel-skill-1' title='输入技能名与说明。第一行为技能名，第二行及以后是技能说明。' onfocus="setTextToolbar(this)" onblur="setTextToolbar()"></textarea>
 					<div class='panel-skill-tags' title='可以设置主公技、锁定技、限定技等特定样式。'>
 						<label><input type='checkbox'>主</label>
 						<label><input type='checkbox'>锁</label>
@@ -55,13 +55,19 @@
 				<input type='button' class='short' value='减少技能' onclick='removeSkill();' />
 			</p>
 			<p><label for='panel-quote'>　　引用：</label><textarea id='panel-quote' title='技能尾部的引用文本。
-两行或以上时，最后一行表示引用出处，若不需要则可留空。'></textarea></p>
+两行或以上时，最后一行表示引用出处，若不需要则可留空。' onfocus="setTextToolbar(this)" onblur="setTextToolbar()"></textarea></p>
 			<p><label for='panel-comment'>　　备注：</label><textarea id='panel-comment' title='内容分为三行：版权信息、插画作者、编号，具体可参考标准版武将卡牌。'>2020 游卡桌游
 KayaK
 XXX 001</textarea></p>
 			<p id='panel-extra'></p>
 			<p>　　　　<input type='submit' class='short' onclick='createFromInput()' />
-			<input type='button' class='short' value='导出为JSON' onclick='exportJson()' /></p>
+			<input type='button' class='short' value='导出为JSON' onclick='exportJson()' /></p>			
+			<nav id="textToolbar">
+				<button type="button" onclick="toggleTagPairs('<b>', '</b>')" title="粗体(Ctrl+B)"><b>B</b></button>
+				<button type="button" onclick="toggleTagPairs('<i>', '</i>')" title="斜体(Ctrl+I)"><i>I</i></button>
+				<button type="button" onclick="toggleTagPairs('<u>', '</u>')" title="下划线(Ctrl+U)"><u>U</u></button>
+				<button type="button" onclick="toggleTagPairs('<del>', '</del>')" title="删除线(Ctrl+D)"><del>D</del></button>
+			</nav>
 		</div>
 		<div id='panel-json' style='display:none;'>
 			<textarea id='panel-json-code' title='编辑或者粘贴卡牌的JSON数据，可将数据另存下来以备用'></textarea>
@@ -157,7 +163,7 @@ XXX 001</textarea></p>
 		overflow-y: hidden;
 	}
 	#panel::before {
-		content: '三国杀卡牌制作器\A 0828 By 开不了车';
+		content: '三国杀卡牌制作器\A 0912 By 开不了车';
 		display: block;
 		white-space: pre;
 		position: fixed;
@@ -223,6 +229,10 @@ XXX 001</textarea></p>
 	#panel-skill-list textarea:first-line {
 		font-weight: bold;
 		color: blue;
+	}
+	
+	#panel-extra > span {
+		white-space: nowrap;
 	}
 	
 	#result{
@@ -307,6 +317,19 @@ XXX 001</textarea></p>
 		margin-left: -3em;
 		width: 3em;
 		white-space: pre;
+	}
+	
+	#textToolbar {
+		position: absolute;
+		display: none;
+		font-size: 0;
+		margin-top: -24px;
+	}
+	#textToolbar * {
+		font-family: Times New Roman;
+		font-size: 1rem;
+		width: 32px;
+		height: 24px;
 	}
 	
 	.mobile-only {
