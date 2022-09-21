@@ -66,6 +66,7 @@
 	width: 200px;
 	height: 0px;
 	line-height: 32px;
+	text-shadow: 0 -1px #FEF8F6, 1px 1px black, -1px -1px black, 0 0 2px black;
 }
 
 .card .hitpoints li{
@@ -90,7 +91,6 @@
 	position: relative;
 	font-size: 24px;
     top: -12px;
-	text-shadow: 0 -1px #FEF8F6, 1px 1px black, -1px -1px black, 0 0 2px black;
 }
 .card .hitpoints[losthp]::after{
 	content: '×' attr(hp) '+' attr(losthp);

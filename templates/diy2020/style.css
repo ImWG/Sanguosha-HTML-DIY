@@ -56,6 +56,7 @@
 	z-index: 5;
 	left: 111px;
 	top: 25px;
+	text-shadow: 1px 1px black, -1px -1px white, 0 0 5px black, 0 0 5px black;
 }
 .card .frame .hitpoints li {
 	display: inline-block;
@@ -79,7 +80,6 @@
 	position: relative;
 	font-size: 36px;
     top: -6px;
-	text-shadow: 1px 1px black, -1px -1px white, 0 0 5px black, 0 0 5px black;
 }
 .card .hitpoints[losthp]:not([maxhp='0']):not([maxhp='1']):not([maxhp='2']):not([maxhp='3']):not([maxhp='4']):not([maxhp='5']):not([maxhp='6']):not([maxhp='7']):not([maxhp='8']):not([maxhp='9']):not([maxhp='10']):not([maxhp='11']):not([maxhp='12'])::after{
 	content: '×' attr(hp) '+' attr(losthp);

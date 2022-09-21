@@ -109,6 +109,7 @@
 	font-size: 32px;
 	line-height: 40px;
 	color: #448BC4;
+	text-shadow: -1px -1px #EED, 0 0 4px black, 0 0 4px black;
 }
 .card .frame .hitpoints li {
 	display: inline-block;
@@ -123,7 +124,6 @@
 .card .frame .hitpoints::after {
 	position: absolute;
 	top: 0;
-	text-shadow: -1px -1px #EED, 0 0 4px black, 0 0 4px black;
 }
 .card .frame .hitpoints:not([maxhp='0']):not([maxhp='1']):not([maxhp='2']):not([maxhp='3']):not([maxhp='4']):not([maxhp='5']) li ~ li{
 	display: none;

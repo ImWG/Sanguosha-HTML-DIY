@@ -165,6 +165,8 @@
 .card .hitpoints {
 	right: 84px;
 	top: 82px;
+	text-shadow: 0 -1px #CAFC69, 1.4px 0 #6F8655, -1.4px 0 #6F8655, 0 -1.4px #6F8655, 0 1.4px #6F8655,
+		1px 1px #6F8655, -1px 1px #6F8655, -1px -1px #6F8655, 1px -1px #6F8655, 0 0 5px #6F8655;
 }
 .card .hitpoints li {
 	display: inline-block;
@@ -191,8 +193,6 @@
 	display: inline-block;
 	overflow: hidden;
 	color: #84E120;
-	text-shadow: 0 -1px #CAFC69, 1.4px 0 #6F8655, -1.4px 0 #6F8655, 0 -1.4px #6F8655, 0 1.4px #6F8655,
-		1px 1px #6F8655, -1px 1px #6F8655, -1px -1px #6F8655, 1px -1px #6F8655, 0 0 5px #6F8655;
 }
 .card .hitpoints:not([maxhp='0']):not([maxhp='1']):not([maxhp='2']):not([maxhp='3']
 		):not([maxhp='4']):not([maxhp='5']):not([maxhp='6']):not([maxhp='7']):not([maxhp='8'])::after {

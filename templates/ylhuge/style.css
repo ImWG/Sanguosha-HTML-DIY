@@ -115,6 +115,7 @@
 	left: 543px;
 	bottom: 30px;
 	--stroke-color: #2D3B5D;
+	text-shadow: var(--border-stroke), 0 3px 6.5px black;
 }
 .card .hitpoints li {
 	display: inline-block;
@@ -149,7 +150,6 @@
 	line-height: 62px;
 	font-family: Arial;
 	color: #EFE9E6;
-	text-shadow: var(--border-stroke), 0 3px 6.5px black;
 }
 .card.lord .frame .hitpoints {
 	--stroke-color: #D3A65E;

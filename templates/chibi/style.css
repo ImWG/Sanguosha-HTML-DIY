@@ -29,6 +29,11 @@
 .card .hitpoints {
 	left: 38px;
 	top: 37px;
+	text-shadow: 0 -5px black, -5px 0 black, 0 5px black, 5px 0 black,
+		3px -4px black, -4px 3px black, 3px 4px black, 4px 3px black,
+		-3px -4px black, -4px -3px black, -3px 4px black, 4px -3px black,
+		2px -4.8px black, -4.8px 2px black, 2px 4.8px black, 4.8px 2px black,
+		-2px -4.8px black, -4.8px -2px black, -2px 4.8px black, 4.8px -2px black;
 }
 
 .card .hitpoints li {
@@ -59,12 +64,6 @@
 	font-family: 'FZKATONG';
 	font-weight: bold;
 	color: var(--light-color);
-	text-shadow: 
-		0 -5px black, -5px 0 black, 0 5px black, 5px 0 black,
-		3px -4px black, -4px 3px black, 3px 4px black, 4px 3px black,
-		-3px -4px black, -4px -3px black, -3px 4px black, 4px -3px black,
-		2px -4.8px black, -4.8px 2px black, 2px 4.8px black, 4.8px 2px black,
-		-2px -4.8px black, -4.8px -2px black, -2px 4.8px black, 4.8px -2px black;
 }
 .card .hitpoints[losthp]:not([losthp='0']):not([maxhp='0']):not([maxhp='1']):not([maxhp='2']
 		):not([maxhp='3']):not([maxhp='4']):not([maxhp='5']
