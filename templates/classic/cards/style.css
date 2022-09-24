@@ -13,7 +13,7 @@
 		装备牌-神器, artifact, 属性基本牌（名字填杀闪桃酒）, basic basic-element,
 		锦囊牌（自定类型）, trick custom, 装备牌（自定类型）, armor custom,
 		锦囊牌（自定类型横）, trick custom rotated, 装备牌（自定类型横）, armor custom rotated,
-		身份牌, role, 身份牌（中心渐变）, role center-gradient;
+		身份牌（线性渐变）, role gradient, 身份牌（径向渐变）, role gradient radial, 身份牌（原色）, role;
 	--text-ranges: 30, 60, 100;
 	--extra-segments: 名称颜色, name-color, 攻击范围/马距离, attack-range;
 	--extra-segment-types: color, text;
@@ -511,7 +511,6 @@
 .card.role {
 	background-image: url('images/role-mask.png');
 	background-color: var(--extra-name-color);
-	-background: url('images/身份.png');
 	height: 562px;
 }
 
@@ -682,9 +681,7 @@
 	height: 1.2em;
 	font-size: 80px;
 	line-height: 1.2em;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    background-image: -webkit-linear-gradient(black, var(--extra-name-color));
+	color: var(--extra-name-color);
 	text-shadow: 3px 0px white, 2.77px 1.15px white, 2.12px 2.12px white, 1.15px 2.77px white,
 		0px 3px white, -1.15px 2.77px white, -2.12px 2.12px white, -2.77px 1.15px white,
 		-3px 0px white, -2.77px -1.15px white, -2.12px -2.12px white, -1.15px -2.77px white,
@@ -692,7 +689,12 @@
 		3px 0px white, 2.77px 1.15px white, 2.12px 2.12px white, 1.15px 2.77px white,
 		0px 3px white, -1.15px 2.77px white, -2.12px 2.12px white, -2.77px 1.15px white;
 }
-.card.role:not(.on-rendering) .frame .custom-kingdom[lang='emoji']::after {
+.card.role.gradient .frame .custom-kingdom {
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-image: -webkit-linear-gradient(black, var(--extra-name-color));
+}
+.card.role.gradient:not(.on-rendering) .frame .custom-kingdom[lang='emoji']::after {
 	content: attr(value);
 }
 
@@ -703,6 +705,23 @@
 	height: 60px !important;
 }
 
-.card.role.center-gradient .custom-kingdom  {
+.card.role.gradient.radial .custom-kingdom  {
     background-image: -webkit-radial-gradient(var(--extra-name-color), black);
+}
+
+
+/* 改变界面信息^_^ */
+
+#panel [for="panel-hp"], #panel [for="panel-kingdom"] {
+	color: transparent;
+}
+#panel [for="panel-hp"]::before {
+	content: '卡牌点数：';
+	margin-right: -5em;
+	color: initial;
+}
+#panel [for="panel-kingdom"]::before {
+	content: '花色：';
+	margin-right: -3em;
+	color: initial;
 }

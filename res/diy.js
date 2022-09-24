@@ -23,7 +23,7 @@ function addSkill(){
 	var skills = document.getElementById('panel-skill-list');
 	var node = document.createElement('div');
 	var length = skills.children.length;
-	node.innerHTML = '<label>　　技能：</label><textarea id="panel-skill-'+length+'" title="输入技能名与说明。第一行为技能名，第二行及以后是技能说明。" onfocus="setTextToolbar(this)" onblur="setTextToolbar()"></textarea> <div class="panel-skill-tags" title="可以设置主公技、锁定技、限定技等特定样式。"><label><input type="checkbox">主</label><label> <input type="checkbox">锁</label><label><input type="checkbox">限</label> <label><input type="checkbox">觉</label></div>';
+	node.innerHTML = '<label>　　技能：</label><textarea id="panel-skill-'+length+'" title="输入技能名与说明。第一行为技能名，第二行及以后是技能说明。" onfocus="setTextToolbar(this)" onblur="setTextToolbar()" onkeydown="editHotkey(event)"></textarea> <div class="panel-skill-tags" title="可以设置主公技、锁定技、限定技等特定样式。"><label><input type="checkbox">主</label><label> <input type="checkbox">锁</label><label><input type="checkbox">限</label> <label><input type="checkbox">衍</label></div>';
 	skills.appendChild(node);
 }
 function removeSkill(){
@@ -1238,5 +1238,18 @@ function toggleTagPairs(prefix, postfix) {
 			currentTextArea.setSelectionRange(start, end + prefixLength + postfixLength);
 		}
 		currentTextArea.focus();
+	}
+}
+
+function editHotkey(event) {
+	if (event.ctrlKey) {
+		switch (event.keyCode) {
+			case 66: toggleTagPairs('<b>', '</b>'); break;
+			case 73: toggleTagPairs('<i>', '</i>'); break;
+			case 85: toggleTagPairs('<u>', '</u>'); break;
+			case 68: toggleTagPairs('<del>', '</del>'); break;
+			default: return;
+		}
+		event.preventDefault();
 	}
 }

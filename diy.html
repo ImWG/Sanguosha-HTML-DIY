@@ -32,22 +32,22 @@
 					title='自定义的势力，不需要时可以留空。&#13;在卡牌中，该值用于表示花色。' /></p>
 			<span id='panel-skill-list'>
 				<div>
-					<label>　　技能：</label><textarea id='panel-skill-0' title='输入技能名与说明。第一行为技能名，第二行及以后是技能说明。' onfocus="setTextToolbar(this)" onblur="setTextToolbar()">怒气
+					<label>　　技能：</label><textarea id='panel-skill-0' title='输入技能名与说明。第一行为技能名，第二行及以后是技能说明。' onfocus="setTextToolbar(this)" onblur="setTextToolbar()" onkeydown="editHotkey(event)">怒气
 <b>锁定技</b>。你的♥♦【杀】无使用距离和次数限制。</textarea>
 					<div class='panel-skill-tags' title='可以设置主公技、锁定技、限定技等特定样式。' >
 						<label><input type='checkbox'>主</label>
 						<label><input type='checkbox'>锁</label>
 						<label><input type='checkbox'>限</label>
-						<label><input type='checkbox'>觉</label>
+						<label><input type='checkbox'>衍</label>
 					</div>
 				</div>
 				<div>
-					<label>　　技能：</label><textarea id='panel-skill-1' title='输入技能名与说明。第一行为技能名，第二行及以后是技能说明。' onfocus="setTextToolbar(this)" onblur="setTextToolbar()"></textarea>
+					<label>　　技能：</label><textarea id='panel-skill-1' title='输入技能名与说明。第一行为技能名，第二行及以后是技能说明。' onfocus="setTextToolbar(this)" onblur="setTextToolbar()" onkeydown="editHotkey(event)"></textarea>
 					<div class='panel-skill-tags' title='可以设置主公技、锁定技、限定技等特定样式。'>
 						<label><input type='checkbox'>主</label>
 						<label><input type='checkbox'>锁</label>
 						<label><input type='checkbox'>限</label>
-						<label><input type='checkbox'>觉</label>
+						<label><input type='checkbox'>衍</label>
 					</div>
 				</div>
 			</span>
@@ -55,7 +55,7 @@
 				<input type='button' class='short' value='减少技能' onclick='removeSkill();' />
 			</p>
 			<p><label for='panel-quote'>　　引用：</label><textarea id='panel-quote' title='技能尾部的引用文本。
-两行或以上时，最后一行表示引用出处，若不需要则可留空。' onfocus="setTextToolbar(this)" onblur="setTextToolbar()"></textarea></p>
+两行或以上时，最后一行表示引用出处，若不需要则可留空。' onfocus="setTextToolbar(this)" onblur="setTextToolbar()" onkeydown="editHotkey(event)"></textarea></p>
 			<p><label for='panel-comment'>　　备注：</label><textarea id='panel-comment' title='内容分为三行：版权信息、插画作者、编号，具体可参考标准版武将卡牌。'>2020 游卡桌游
 KayaK
 XXX 001</textarea></p>
@@ -325,6 +325,9 @@ XXX 001</textarea></p>
 		font-size: 0;
 		margin-top: -24px;
 	}
+	#textToolbar:active {
+		display: initial;
+	}
 	#textToolbar * {
 		font-family: Times New Roman;
 		font-size: 1rem;
@@ -336,7 +339,7 @@ XXX 001</textarea></p>
 		display: none;
 	}
 	
-	@media(max-width:768px) {
+	@media not (any-hover) {
 		#panel{
 			position: absolute;
 		}

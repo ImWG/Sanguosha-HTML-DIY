@@ -74,19 +74,27 @@
 	right: 5px;
 	width: 35px;
 	text-align: center;
+	counter-reset: hp maxhp;
 }
 .card .hitpoints li {
 	width: 35px;
 	height: 35px;
 	margin-bottom: 5px;
 	background-image: url('images/hp.png');
+	counter-increment: hp maxhp;
+}
+.card .hitpoints li.drained {
+	opacity: 0.35;
+	counter-increment: maxhp;
 }
 .card .hitpoints::after {
 	font-size: 28px;
 	color: #C3272B;
 }
 .card .hitpoints:not([maxhp='0']):not([maxhp='1']):not([maxhp='2']):not([maxhp='3']):not([maxhp='4']):not([maxhp='5']) li ~ li {
-	display: none;
+	/* display: none; */
+	visibility: hidden;
+	position: absolute;
 }
 .card .hitpoints[maxhp='6']::after { content: '六'; }
 .card .hitpoints[maxhp='7']::after { content: '七'; }
@@ -103,6 +111,13 @@
 .card .hitpoints[maxhp='18']::after { content: '十八'; }
 .card .hitpoints[maxhp='19']::after { content: '十九'; }
 .card .hitpoints[maxhp='20']::after { content: '二十'; }
+
+.card .hitpoints:not([maxhp='0']):not([maxhp='1']):not([maxhp='2']):not([maxhp='3']):not([maxhp='4']):not([maxhp='5'])::after {
+	content: counter(hp, cjk-ideographic);
+}
+.card .hitpoints:not([maxhp='0']):not([maxhp='1']):not([maxhp='2']):not([maxhp='3']):not([maxhp='4']):not([maxhp='5'])[losthp]::after {
+	content: counter(hp, cjk-ideographic) '之' counter(maxhp, cjk-ideographic);
+}
 
 .card .description {
 	left: 184px;

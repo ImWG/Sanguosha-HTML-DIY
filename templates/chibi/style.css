@@ -68,7 +68,7 @@
 .card .hitpoints[losthp]:not([losthp='0']):not([maxhp='0']):not([maxhp='1']):not([maxhp='2']
 		):not([maxhp='3']):not([maxhp='4']):not([maxhp='5']
 		):not([maxhp='6']):not([maxhp='7']):not([maxhp='8'])::after {
-	content: '×' attr(hp) ' + ' attr(losthp);
+	content: attr(hp) ' / ' attr(maxhp);
 }
 
 .card .nickname {

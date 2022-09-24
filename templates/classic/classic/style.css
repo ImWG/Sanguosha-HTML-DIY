@@ -93,7 +93,7 @@
     top: -12px;
 }
 .card .hitpoints[losthp]::after{
-	content: '×' attr(hp) '+' attr(losthp);
+	content: attr(hp) '/' attr(maxhp);
 }
 .card .hitpoints li~li {
 	display: none;

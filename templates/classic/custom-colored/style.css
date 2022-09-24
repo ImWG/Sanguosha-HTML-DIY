@@ -94,9 +94,10 @@
 	font-size: 21px;
 	text-align: center;
 	line-height: 24px;
-	text-shadow: 0 2px 3px black;
+	text-shadow: 0 calc(var(--output-scale) * 2px) calc(var(--output-scale) * 3px) black;
 	margin-top: -1px;
 	color: var(--extra-edge-color);
+	--rate: var(--output-scale, 1);
 }
 .card .hitpoints li::after{
 	content: '';
@@ -122,7 +123,7 @@
     top: -6px;
 }
 .card .hitpoints[losthp]::after{
-	content: '×' attr(hp) '+' attr(losthp);
+	content: attr(hp) '/' attr(maxhp);
 }
 .card .hitpoints li~li {
 	display: none;
