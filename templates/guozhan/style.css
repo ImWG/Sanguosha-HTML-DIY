@@ -8,6 +8,7 @@
 	height: 580px;
 	--variants: 魏, wei, 蜀, shu, 吴, wu, 群, qun,
 		魏君, wei lord, 蜀君, shu lord, 吴君, wu lord, 群君, qun lord,
+		魏大旗, wei banner, 蜀大旗, shu banner, 吴大旗, wu banner, 群大旗, qun banner,
 		双势力-魏蜀, wei xshu, 双势力-魏吴, wei xwu, 双势力-魏群, wei xqun,
 		双势力-蜀吴, shu xwu, 双势力-蜀群, shu xqun, 双势力-吴群, wu xqun,
 		三势力-魏蜀吴, wei xshu xwu, 三势力-魏蜀群, wei xshu xqun, 
@@ -177,12 +178,12 @@
 	font-family: SimSun;
 	transform-origin: 0 100%;
 	transform: scale(0.5);
+	color: white;
 }
 .card .footer label {
 	position: static;
 	left: 0px;
 	top: 0px;
-	color: white;
 }
 
 .card .footer .index {
@@ -560,7 +561,7 @@
     background-image: -webkit-linear-gradient(white 0%, #ABEBFF 100%);
     -webkit-background-clip: text;
 }
-.card:not(.xwei):not(.xshu):not(.xwu):not(.xqun).on-rendering .frame .custom-kingdom{
+.card:not(.xwei):not(.xshu):not(.xwu):not(.xqun):not(.banner).on-rendering .frame .custom-kingdom{
 	color: black;
 }
 
@@ -584,4 +585,95 @@
 }
 .card.on-rendering.god .frame .custom-kingdom {
     background-image: -webkit-linear-gradient(-135deg, white 0%, #BBBAB8 15%, white 30%, #BBBAB8 45%, white 60%, #BBBAB8 75%, white 90%);
+}
+
+
+/* Banners */
+
+.card.banner .frame{
+	background: url('images/banner-wei.png'), url('images/bannerbody.png');
+	-background: url('E:/BaiduYunDownload/【TC041】三国杀·国战模板【低调de洛沫】(1)/x05.png');
+}
+.card.banner .frame::before, .card.banner .frame::after {
+	content: initial;
+}
+.card.banner .hitpoints, .card.banner .nickname {
+	display: none;
+}
+
+.card.banner .frame .custom-kingdom {
+	display: initial;
+	font-family: 'DFPNewChuan-B5';
+	background-clip: initial;
+	background: none;
+	color: #B0832E;
+	font-weight: normal;
+	margin: auto;
+	left: 0;
+	right: 0;
+	width: 60px;
+	text-align: center;
+	top: 283px;
+	height: 60px;
+	font-size: 52px;
+	text-shadow: 0 0 3px black;
+}
+.card.banner .custom-kingdom:empty::before {
+	content: '令';
+}
+
+.card.banner .name {
+	font-family: LiShu;
+	font-size: 32px;
+	margin: auto;
+	left: 0;
+	right: 0;
+	color: #D1A82D;
+	text-shadow: none;
+	width: 140px;
+	writing-mode: initial;
+	text-align: center;
+	font-size: 22px;
+	top: 15px;
+	line-height: 24px;
+}
+
+.card.banner .description {
+	left: 114px;
+	bottom: 39px;
+	width: 480px;
+	height: 370px;
+}
+.card.banner .description .pointer {
+	left: -178px;
+	width: 90px;
+	height: 56px;
+	font-size: 36px;
+	line-height: 38px;
+	background: url(images/pointer-banner.png) 0 0 / 176px 56px no-repeat;
+	padding-left: 50px;
+	text-align: center;
+	padding-right: 36px;
+}
+.card.banner .description p {
+	text-indent: 0;
+}
+.card.banner .description-large {
+	font-size: 32px;
+}
+
+.card.banner .frame .footer {
+	color: black;
+	bottom: 12px;
+}
+
+
+.card.banner.shu .frame{
+	background: url('images/banner-shu.png'), url('images/bannerbody.png');
+}
+.card.banner.wu .frame{
+	background: url('images/banner-wu.png'), url('images/bannerbody.png');
+}
+.card.banner.qun .frame{
+	background: url('images/banner-qun.png'), url('images/bannerbody.png');
 }
