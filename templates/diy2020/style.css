@@ -306,6 +306,12 @@
 	content: '™&© ';
 }
 
+.card .package {
+    right: 12px;
+    bottom: 26px;
+	font-size: 28px;
+}
+
 
 /* Ink Style */
 .card.ink .frame .hitpoints li, .card[extra-hp-style="ink"] .frame .hitpoints li {
@@ -530,6 +536,12 @@
 	left: -120px;
 	right: -120px;
 	color: white;
+}
+
+.card.god .package {
+    right: 20px;
+    bottom: 32px;
+	font-size: 28px;
 }
 
 

@@ -74,6 +74,10 @@ function getImagePathFront(){
 	var file = getFileURL(document.getElementById('panel-illustration-front').files[0]);
 	document.getElementById('panel-illustration-online-front').value = file;
 }
+function getImagePathPackage(){
+	var file = getFileURL(document.getElementById('panel-package-file').files[0]);
+	document.getElementById('panel-package').value = file;
+}
 
 function createFromInput(){
 	document.getElementById('result').innerHTML = ''
@@ -119,6 +123,7 @@ function generateFromInput(){
 	
 	var quote = document.getElementById('panel-quote').value;
 	var comment = document.getElementById('panel-comment').value.split(/\r?\n/);
+	var package = document.getElementById('panel-package').value;
 	
 	var adjust = document.getElementById('panel-illustration-adjust').value.split(/\s*,\s*/);
 	var illuFront = document.getElementById('panel-illustration-online-front').value;
@@ -151,6 +156,7 @@ function generateFromInput(){
 		'skills': skills,
 		'quote': quote,
 		'comment': comment,
+		'package': package
 	};
 	
 	if (EXTRA_SEGMENTS.length > 0) {
@@ -422,6 +428,20 @@ function createCard(object){
 		right.innerHTML = comment[0]
 	}
 	
+	var package = object.package;
+	if (package) {
+		var packageElement = card.getElementsByClassName('package')[0];
+		if (package.length > 8 && package.indexOf(':') >= 0) {
+			packageElement.style.backgroundImage = 'url("' + package + '")';
+			packageElement.innerHTML = ' ';
+			packageElement.setAttribute('image', '');
+		}else{
+			packageElement.innerHTML = package;
+			packageElement.setAttribute('length', getTextLength(package));
+			packageElement.setAttribute('value', package);
+		}
+	}
+	
 	if (object.extra) {
 		for (var i = 0; i < EXTRA_SEGMENTS.length; ++i) {
 			var key = EXTRA_SEGMENTS[i];
@@ -654,12 +674,12 @@ function exportForm(){
 	
 	if (typeof(object.illustration) == 'object'){
 		var illu = object.illustration;
-		document.getElementById('panel-illustration-online').value = illu.path;
-		document.getElementById('panel-illustration-online-front').value = illu.pathFront;
+		document.getElementById('panel-illustration-online').value = illu.path || '';
+		document.getElementById('panel-illustration-online-front').value = illu.pathFront || '';
 		document.getElementById('panel-illustration-adjust').value = illu.adjust.x + ', ' + illu.adjust.y + ', ' + illu.adjust.scale
 	}else{
-		document.getElementById('panel-illustration-online').value = object.illustration;
-		document.getElementById('panel-illustration-online-front').value = object.illustrationFront;
+		document.getElementById('panel-illustration-online').value = object.illustration || '';
+		document.getElementById('panel-illustration-online-front').value = '';
 	}
 	
 	document.getElementById('panel-name').value = object.name
@@ -703,6 +723,7 @@ function exportForm(){
 	
 	document.getElementById('panel-quote').value = object.quote || '';
 	document.getElementById('panel-comment').value = object.comment.join('\r\n');
+	document.getElementById('panel-package').value = object.package || '';
 	
 	if (object.extra) {
 		for (var i = 0; i < EXTRA_SEGMENTS.length; ++i) {

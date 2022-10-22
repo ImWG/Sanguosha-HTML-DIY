@@ -44,16 +44,27 @@
 	background: url('images/wei.png') 0 0 / 1000px auto;
 	z-index: 2;
 }
-.card .frame::after {
-	content: '';
+.card .package {
 	display: block;
 	position: absolute;
 	width: 74px;
 	height: 80px;
 	right: 31px;
 	bottom: 26px;
-	background: url(images/piece.png) -79px 0 / 153px auto;
+	background: url(images/piece.png) -79px 0 / 153px auto no-repeat;
 	z-index: 2;
+	color: #0F6FB0;
+	text-shadow: none;
+	font-size: 32px;
+	line-height: 74px;
+	font-family: LiBian;
+}
+.card .package:empty {
+	display: initial;
+}
+.card .package[image] {
+	background-position: center !important;
+	background-size: contain !important;
 }
 
 .card .custom-kingdom {
@@ -304,19 +315,19 @@
 	background-image: url('images/jin.png');
 }
 
-.card.shu .frame::after, .card.shu .custom-kingdom {
+.card.shu .package, .card.shu .custom-kingdom {
 	background-position-y: -83px;
 	color: #E55A37;
 }
-.card.wu .frame::after, .card.wu .custom-kingdom {
+.card.wu .package, .card.wu .custom-kingdom {
 	background-position-y: -166px;
 	color: #00A759;
 }
-.card.qun .frame::after, .card.qun .custom-kingdom {
+.card.qun .package, .card.qun .custom-kingdom {
 	background-position-y: -249px;
 	color: #958683;
 }
-.card.jin .frame::after, .card.jin .custom-kingdom {
+.card.jin .package, .card.jin .custom-kingdom {
 	background-position-y: -332px;
 	color: #8A4492;
 }
@@ -367,7 +378,7 @@
 .card.god .frame::before {
 	background-image: url('images/god.png');
 }
-.card.god .frame::after {
+.card.god .package {
 	left: 31px;
 	right: auto;
 	background-position-y: -498px;

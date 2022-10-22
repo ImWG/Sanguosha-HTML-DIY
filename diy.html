@@ -59,6 +59,8 @@
 			<p><label for='panel-comment'>　　备注：</label><textarea id='panel-comment' title='内容分为三行：版权信息、插画作者、编号，具体可参考标准版武将卡牌。'>2020 游卡桌游
 KayaK
 XXX 001</textarea></p>
+			<p><label for='panel-package'>扩展标记：</label><input id='panel-package' title='输入名字或选择图片均可。可以将路径粘贴到这里。' />
+			<input id='panel-package-file' class='short' type='file' onchange='getImagePathPackage();' title='点击以从文件夹选择图片。' /></p>
 			<p id='panel-extra'></p>
 			<p>　　　　<input type='submit' class='short' onclick='createFromInput()' />
 			<input type='button' class='short' value='导出为JSON' onclick='exportJson()' /></p>			
@@ -162,6 +164,7 @@ XXX 001</textarea></p>
 					<label class='illustrator'></label>
 					<label class='index'></label>
 				</div>
+				<label class="package"></label>
 				
 			</div>
 		</div>

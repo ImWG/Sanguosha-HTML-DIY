@@ -293,6 +293,12 @@
 	content: '™&© ';
 }
 
+.card .package {
+	right: 20px;
+	bottom: 20px;
+	font-size: 24px;
+}
+
 .real-kingdom {
 	display: none;
 }

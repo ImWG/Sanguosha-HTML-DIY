@@ -308,6 +308,12 @@
 	color: #B78A31;
 }
 
+.card .package {
+	right: 6px;
+	bottom: 4px;
+	font-size: 28px;
+}
+
 
 /* Multi-kingdoms */
 
