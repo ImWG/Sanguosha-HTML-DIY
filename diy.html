@@ -67,6 +67,31 @@ XXX 001</textarea></p>
 				<button type="button" onclick="toggleTagPairs('<i>', '</i>')" title="斜体(Ctrl+I)"><i>I</i></button>
 				<button type="button" onclick="toggleTagPairs('<u>', '</u>')" title="下划线(Ctrl+U)"><u>U</u></button>
 				<button type="button" onclick="toggleTagPairs('<del>', '</del>')" title="删除线(Ctrl+D)"><del>D</del></button>
+				<select id="toolbarFont" title="设置文本片段的字体" style="width: 5em">
+					<option value="" selected>（选择字体）</option> 
+					<option value="arial" style="f:'Arial'">Arial</option> 
+					<option value="arialb" style="f:'Arial Black'">Arial Black</option> 
+					<option value="meiryo" style="f:'Meiryo'">Meiryo</option> 
+					<option value="yahei" style="f:'Microsoft YaHei'">微软雅黑</option>
+					<option value="song" style="f:'SongTi'">宋体</option> 
+					<option value="fang" style="f:'FangSong'">仿宋</option> 
+					<option value="kai" style="f:'KaiTi'">楷体</option> 
+					<option value="hei" style="f:'HeiTi'">黑体</option>  
+					<option value="li" style="f:'LiShu'">隶书</option> 
+					<option value="xingkai" style="f:'XingKai'">行楷</option> 
+					<option value="zhunyuan" style="f:'ZhunYuan'">准圆</option> 
+					<option value="libian" style="f:'LiBian'">隶变</option> 
+					<option value="mao" style="f:'JMMaoCaoXingEx', 'JMMaoCaoXing'">金梅毛草行</option> 
+					<option value="katong" style="f:'FZKaTong'">方正卡通体</option> 
+					<option value="qingke" style="f:'FZHLFW'">方正华隶繁</option> 
+					<option value="qingke" style="f:'FZQingKeBenYueSong'">方正清刻本悦宋</option> 
+					<option value="shaoer" style="f:'FZShaoer'">方正少儿体</option> 
+					<option value="wawa" style="f:'HKWaWaW5'">华康娃娃体</option> 
+					<option value="zhuan" style="f:'DFPNewChuan-B5'">华康新篆体</option> 
+					<option value="fangzhuan" style="f:'JingDianFanFangZhuan'">经典繁方篆</option> 
+					<option value="jiaoli" style="f:'JingDianFanJiaoLi'">经典繁角隶</option> 
+					<option value="renzhe" style="f:'BaiZhouRenZhe'">白舟忍者字体</option> 
+				</select>
 			</nav>
 		</div>
 		<div id='panel-json' style='display:none;'>
@@ -325,21 +350,22 @@ XXX 001</textarea></p>
 		font-size: 0;
 		margin-top: -24px;
 	}
-	#textToolbar:active {
-		display: initial;
+	#textToolbar:hover {
+		display: initial !important;
 	}
 	#textToolbar * {
 		font-family: Times New Roman;
 		font-size: 1rem;
 		width: 32px;
 		height: 24px;
+		vertical-align: bottom;
 	}
 	
 	.mobile-only {
 		display: none;
 	}
 	
-	@media not (any-hover) {
+	@media screen and (max-width: 768px) {
 		#panel{
 			position: absolute;
 		}

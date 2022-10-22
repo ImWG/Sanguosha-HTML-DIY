@@ -4,122 +4,207 @@
 /* System Fonts for Mobile */
 @font-face {
 	font-family: 'SongTi';
-	src: local('宋体'), local('SimSun'), url('../fonts/mobile/STSONG.TTF'), url('../fonts/mobile/SimSong.TTF') format('truetype');
+	src: local('宋体'), local('SimSun'), url('../fonts/mobile/STSONG.ttf'),
+		url('../fonts/mobile/SimSong.woff') format('woff'), url('../fonts/mobile/SimSong.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'FangSong';
-	src: local('仿宋'), local('SimFang'), local('FangSong'), url('../fonts/mobile/SimFang.TTF'), url('../fonts/mobile/STFangSong.TTF') format('truetype');
+	src: local('仿宋'), local('SimFang'), local('FangSong'), url('../fonts/mobile/SimFang.ttf'),
+		url('../fonts/mobile/STFangSong.woff') format('woff'), url('../fonts/mobile/STFangSong.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'KaiTi';
-	src: local('楷体'), local('SimKai'), local('KaiTi'), url('../fonts/mobile/SimKai.TTF'), url('../fonts/mobile/STKaiTi.TTF') format('truetype');
+	src: local('楷体'), local('SimKai'), local('KaiTi'), url('../fonts/mobile/SimKai.ttf'),
+		url('../fonts/mobile/STKaiTi.woff') format('woff'), url('../fonts/mobile/STKaiTi.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'HeiTi';
-	src: local('黑体'), local('SimHei'), url('../fonts/mobile/SIMHEI.TTF'), url('../fonts/mobile/STHEI.TTF') format('truetype');
-}
-@font-face {
-	font-family: 'LiShu';
-	src: local('隶书'), local('LiSu'), local('LiShu'), url('../fonts/mobile/SIMLI.TTF') format('truetype');
+	src: local('黑体'), local('SimHei'), url('../fonts/mobile/SIMHEI.ttf'),
+		url('../fonts/mobile/STHEI.woff') format('woff'), url('../fonts/mobile/STHEI.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'Microsoft YaHei';
 	font-weight: normal;
-	src: local('微软雅黑'), local('Microsoft YaHei'), local('msyh'), url('../fonts/mobile/MSYH.TTF') format('truetype');
+	src: local('微软雅黑'), local('Microsoft YaHei'), local('msyh'),
+		url('../fonts/mobile/MSYH.woff') format('woff'), url('../fonts/mobile/MSYH.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'Microsoft YaHei';
 	font-weight: bold;
-	src: local('微软雅黑 Bold'), local('Microsoft YaHei Bold'), local('msyhbd'), url('../fonts/mobile/MSYHBD.TTF') format('truetype');
+	src: local('微软雅黑 Bold'), local('Microsoft YaHei Bold'), local('msyhbd'),
+		url('../fonts/mobile/MSYHBD.woff') format('woff'), url('../fonts/mobile/MSYHBD.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'Arial';
 	font-weight: normal;
-	src: local('Arial'), local('arial'), url('../fonts/mobile/arial.TTF') format('truetype');
+	src: local('Arial'), local('arial'),
+		url('../fonts/mobile/arial.woff') format('woff'), url('../fonts/mobile/arial.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'Arial';
 	font-weight: bold;
-	src: local('Arial Bold'), local('arialbd'), url('../fonts/mobile/arialbd.TTF') format('truetype');
+	src: local('Arial Bold'), local('arialbd'),
+		url('../fonts/mobile/arialbd.woff') format('woff'), url('../fonts/mobile/arialbd.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'Arial';
 	font-weight: bold;
 	font-style: italic;
-	src: local('Arial Bold Italic'), local('arialbi'), url('../fonts/mobile/arialbi.TTF') format('truetype');
+	src: local('Arial Bold Italic'), local('arialbi'),
+		url('../fonts/mobile/arialbi.woff') format('woff'), url('../fonts/mobile/arialbi.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'Arial';
 	font-weight: normal;
 	font-style: italic;
-	src: local('Arial Italic'), local('ariali'), url('../fonts/mobile/ariali.TTF') format('truetype');
+	src: local('Arial Italic'), local('ariali'),
+		url('../fonts/mobile/ariali.woff') format('woff'), url('../fonts/mobile/ariali.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'Arial Black';
-	src: local('Arial Black'), local('ariblk'), url('../fonts/mobile/ariblk.TTF') format('truetype');
+	src: local('Arial Black'), local('ariblk'),
+		url('../fonts/mobile/ariblk.woff') format('woff'), url('../fonts/mobile/ariblk.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'Meiryo';
-	src: local('meiryo'), url('../fonts/mobile/Meiryo.TTF') format('truetype');
+	src: local('meiryo'), url('../fonts/mobile/Meiryo.woff') format('woff'), url('../fonts/mobile/Meiryo.ttf') format('truetype');
 }
 
 
 /* New Fonts */
 @font-face {
+	font-family: 'LiShu';
+	src: local('隶书'), local('LiSu'), local('LiShu'), url('../fonts/SIMLI.woff') format('woff'),
+		url('../fonts/mobile/SIMLI.ttf') format('truetype');
+}
+@font-face {
 	font-family: 'XingKai';
-	src: url('../fonts/STXINGKA.WOFF') format('woff'), url('../fonts/STXINGKA.TTF') format('truetype');
+	src: url('../fonts/STXINGKA.woff') format('woff'), url('../fonts/STXINGKA.ttf') format('truetype');
 }
 @font-face { /* Alias */
 	font-family: 'STXingKai';
-	src: url('../fonts/STXINGKA.WOFF') format('woff'), url('../fonts/STXINGKA.TTF') format('truetype');
+	src: url('../fonts/STXINGKA.woff') format('woff'), url('../fonts/STXINGKA.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'JMMaoCaoXing'; /* 自定义字体名称 */
-	src: url('../fonts/jmmao.WOFF') format('woff'), url('../fonts/jmmao.TTF') format('truetype');
+	src: url('../fonts/jmmao.woff') format('woff'), url('../fonts/jmmao.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'JMMaoCaoXingEx'; /* 自定义字体名称 */
-	src: url('../fonts/jmmex.TTF') format('truetype');
+	src: url('../fonts/jmmex.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'DFPNewChuan-B5';
-	src: url('../fonts/DFNewChua.WOFF') format('woff'), url('../fonts/DFNewChua.TTF') format('truetype');
+	src: url('../fonts/DFNewChua.woff') format('woff'), url('../fonts/DFNewChua.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'ZhunYuan';
-	src: url('../fonts/RuiYunZhunYuan.WOFF') format('woff'), url('../fonts/RuiYunZhunYuan.TTF') format('truetype');
+	src: url('../fonts/RuiYunZhunYuan.woff') format('woff'), url('../fonts/RuiYunZhunYuan.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'JingDianFanJiaoLi';
-	src: url('../fonts/JingDianFanJiaoLi.WOFF') format('woff'), url('../fonts/JingDianFanJiaoLi.TTF') format('truetype');
+	src: url('../fonts/JingDianFanJiaoLi.woff') format('woff'), url('../fonts/JingDianFanJiaoLi.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'LiBian';
-	src: url('../fonts/FZLiBian.WOFF') format('woff'), url('../fonts/FZLiBian.TTF') format('truetype');
+	src: url('../fonts/FZLiBian.woff') format('woff'), url('../fonts/FZLiBian.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'FZKaTong';
-	src: url('../fonts/FZKaTong.WOFF') format('woff'), url('../fonts/FZKaTong.TTF') format('truetype');
+	src: url('../fonts/FZKaTong.woff') format('woff'), url('../fonts/FZKaTong.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'FZShaoer';
-	src: url('../fonts/FZShaoer.WOFF') format('woff'), url('../fonts/FZShaoer.TTF') format('truetype');
+	src: url('../fonts/FZShaoer.woff') format('woff'), url('../fonts/FZShaoer.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'HKWaWaW5';
-	src: url('../fonts/HKWaWaW5.WOFF') format('woff'), url('../fonts/HKWaWaW5.TTF') format('truetype');
+	src: url('../fonts/HKWaWaW5.woff') format('woff'), url('../fonts/HKWaWaW5.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'FZQingKeBenYueSong';
-	src: url('../fonts/FZQingKeBenYueSong.TTF');
+	src: url('../fonts/FZQingKeBenYueSong.ttf');
 }
 @font-face {
 	font-family: 'BaiZhouRenZhe';
-	src: url('../fonts/BaiZhouRenZhe.WOFF') format('woff'), url('../fonts/BaiZhouRenZhe.TTF') format('truetype');
+	src: url('../fonts/BaiZhouRenZhe.woff') format('woff'), url('../fonts/BaiZhouRenZhe.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'JingDianFanFangZhuan';
-	src: url('../fonts/JingDianFanFangZhuan.WOFF') format('woff'), url('../fonts/JingDianFanFangZhuan.TTF') format('truetype');
+	src: url('../fonts/JingDianFanFangZhuan.woff') format('woff'), url('../fonts/JingDianFanFangZhuan.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'FZHLFW';
+	src: url('../fonts/FZHLFW.woff') format('woff'), url('../fonts/FZHLFW.ttf') format('truetype');
+}
+
+
+/* Custom Font Tags */
+font[song] {
+	font-family: 'SongTi';
+}
+font[fang] {
+	font-family: 'FangSong';
+}
+font[kai] {
+	font-family: 'KaiTi';
+}
+font[hei] {
+	font-family: 'HeiTi';
+}
+font[yahei] {
+	font-family: 'Microsoft YaHei';
+}
+font[arial] {
+	font-family: 'Arial';
+}
+font[arialb] {
+	font-family: 'Arial Black';
+}
+font[meiryo] {
+	font-family: 'Meiryo';
+}
+font[li] {
+	font-family: 'LiShu';
+}
+font[xingkai] {
+	font-family: 'XingKai';
+}
+font[mao] {
+	font-family: 'JMMaoCaoXingEx', 'JMMaoCaoXing';
+}
+font[zhuan] {
+	font-family: 'DFPNewChuan-B5';
+}
+font[zhunyuan] {
+	font-family: 'ZhunYuan';
+}
+font[jiaoli] {
+	font-family: 'JingDianFanJiaoLi';
+}
+font[libian] {
+	font-family: 'LiBian';
+}
+font[katong] {
+	font-family: 'FZKaTong';
+}
+font[shaoer] {
+	font-family: 'FZShaoer';
+}
+font[wawa] {
+	font-family: 'HKWaWaW5';
+}
+font[qingke] {
+	font-family: 'FZQingKeBenYueSong';
+}
+font[renzhe] {
+	font-family: 'BaiZhouRenZhe';
+}
+font[fangzhuan] {
+	font-family: 'JingDianFanFangZhuan';
+}
+font[huali] {
+	font-family: 'FZHLFW';
 }
 
 
@@ -131,12 +216,12 @@
 }
 @font-face { /* Symbol "&" */
 	font-family: 'SymbolAnd';
-	/* src: url('../fonts/andh.TTF') format('truetype'); */
+	/* src: url('../fonts/andh.ttf') format('truetype'); */
 	src: url('data:application/octet-stream;base64,AAEAAAALAIAAAwAwT1MvMj//lSkAAAE4AAAAVmNtYXABBAKxAAABmAAAAiZnYXNw//8AAwAACegAAAAIZ2x5ZodzodYAAAPIAAAAyGhlYWQgD36qAAAAvAAAADZoaGVhDcIFSAAAAPQAAAAkaG10eAqTAOIAAAGQAAAACGxvY2EAZAAOAAADwAAAAAZtYXhwAAYANwAAARgAAAAgbmFtZRmBe4MAAASQAAAFLXBvc3T/NACWAAAJwAAAACYAAQAAAAEAAApBk9JfDzz1AAsIAAAAAADdWZjMAAAAAN1Zm0kAZAAABdsFmgAAAAYAAQAAAAAAAAABAAAHPv5OAEMGkwBkAGQF2wABAAAAAAAAAAAAAAAAAAAAAgABAAAAAgA3AAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEFSQGQAAUACAWaBTMAAAEbBZoFMwAAA9EAZgISAAACAAUAAAAAAAAAgAAAp1AAAEoAAAAAAAAAAEhMICAAQAAmACYF0/5RATMHPgGyIAABEUEAAAAAAAQAAGQGkwB+AAAAAwAAAAMAAAAcAAEAAAAAADwAAwABAAAAHAAEACAAAAAEAAQAAQAAACb//wAAACb////bAAEAAAAAAAYB6gAAAAEA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgBkAAAAAQBkAAADnAWaAAMAADMRIRFkAzgFmvpmAAAAAAMAfgCFBdsFIAAiACwANgAAEzYzMhMXMhM1NCc1NzMWMzI/ATMyFwcVFhECKwEiASMFJDUFNj0BJisBBxQXBTI3AyMGDwEVFn4Xq67XTpmDmycaZyc3PicnGxgztSq/Gtb+9zT+4/7WAWtN4zoZJ88C73oIWzR2gBpdAtnP/v00AR0NHX80JmfcGnXPNLr+6P6vAR1BcvnCCB8nwjRgfNyoARDjIBoagQAAAAAAACgB5gABAAAAAAAAADMAAAABAAAAAAABABQAOgABAAAAAAACAAcAMwABAAAAAAADACEAOgABAAAAAAAEABQAOgABAAAAAAAFAC8AWwABAAAAAAAGABIAigABAAAAAAAKAD8AnAADAAEEAwACAAwC/QADAAEEBQACABAA2wADAAEEBgACAAwA6wADAAEEBwACABAA9wADAAEECAACABABBwADAAEECQAAAGYBFwADAAEECQABACgBiwADAAEECQACAA4BfQADAAEECQADAEIBiwADAAEECQAEACgBiwADAAEECQAFAF4BzQADAAEECQAGACQCKwADAAEECQAKAH4CTwADAAEECgACAAwC/QADAAEECwACABACzQADAAEEDAACAAwC/QADAAEEDgACAAwDGwADAAEEEAACAA4C3QADAAEEEwACABIC6wADAAEEFAACAAwC/QADAAEEFQACABAC/QADAAEEFgACAAwC/QADAAEEGQACAA4DDQADAAEEGwACABADGwADAAEEHQACAAwC/QADAAEEHwACAAwC/QADAAEEJAACAA4DKwADAAEELQACAA4DOQADAAEICgACAAwC/QADAAEIFgACAAwC/QADAAEMCgACAAwC/QADAAEMDAACAAwC/VR5cGVmYWNlID8oeW91ciBjb21wYW55KS4gMjAyMS4gQWxsIFJpZ2h0cyBSZXNlcnZlZFJlZ3VsYXJTYW5ndW9zaGEgU3ltYm9sIEFuZDpWZXJzaW9uIDEuMDBWZXJzaW9uIDEuMDAgU2VwdGVtYmVyIDQsIDIwMjEsIGluaXRpYWwgcmVsZWFzZVNhbmd1b3NoYVN5bWJvbEFuZFRoaXMgZm9udCB3YXMgY3JlYXRlZCB1c2luZyBGb250Q3JlYXRvciA1LjYgZnJvbSBIaWdoLUxvZ2ljLmNvbQBvAGIAeQENAGUAagBuAOkAbgBvAHIAbQBhAGwAUwB0AGEAbgBkAGEAcgBkA5oDsQO9A78DvQO5A7oDrABUAHkAcABlAGYAYQBjAGUAIAA/ACgAeQBvAHUAcgAgAGMAbwBtAHAAYQBuAHkAKQAuACAAMgAwADIAMQAuACAAQQBsAGwAIABSAGkAZwBoAHQAcwAgAFIAZQBzAGUAcgB2AGUAZABSAGUAZwB1AGwAYQByAFMAYQBuAGcAdQBvAHMAaABhACAAUwB5AG0AYgBvAGwAIABBAG4AZAA6AFYAZQByAHMAaQBvAG4AIAAxAC4AMAAwAFYAZQByAHMAaQBvAG4AIAAxAC4AMAAwACAAUwBlAHAAdABlAG0AYgBlAHIAIAA0ACwAIAAyADAAMgAxACwAIABpAG4AaQB0AGkAYQBsACAAcgBlAGwAZQBhAHMAZQBTAGEAbgBnAHUAbwBzAGgAYQBTAHkAbQBiAG8AbABBAG4AZABUAGgAaQBzACAAZgBvAG4AdAAgAHcAYQBzACAAYwByAGUAYQB0AGUAZAAgAHUAcwBpAG4AZwAgAEYAbwBuAHQAQwByAGUAYQB0AG8AcgAgADUALgA2ACAAZgByAG8AbQAgAEgAaQBnAGgALQBMAG8AZwBpAGMALgBjAG8AbQBOAG8AcgBtAGEAYQBsAGkATgBvAHIAbQBhAGwAZQBTAHQAYQBuAGQAYQBhAHIAZABOAG8AcgBtAGEAbABuAHkEHgQxBEsERwQ9BEsEOQBOAG8AcgBtAOEAbABuAGUATgBhAHYAYQBkAG4AbwBBAHIAcgB1AG4AdABhAAAAAAIAAAAAAAD/JwCWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAkAAAAAAAH//wAC');
 }
 @font-face { /* Symbol "&" */
 	font-family: 'SymbolAndHorizontal';
-	/* src: url('../fonts/andh.TTF') format('truetype'); */
+	/* src: url('../fonts/andh.ttf') format('truetype'); */
 	src: url('data:application/font-woff;base64,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');
 }
 
@@ -183,6 +268,10 @@
 	width: 100%;
 	height: 100%;
 	z-index: 10;
+}
+
+.card .custom-kingdom:empty {
+	display: none;
 }
 
 .card .hitpoints{
@@ -297,4 +386,9 @@
     -webkit-text-fill-color: var(--gradient-emoji, white !important);
     -webkit-background-clip: var(--gradient-emoji, content-box !important);
     background-image: var(--gradient-emoji, none !important);
+}
+
+/* SVG Template */
+* {
+	--svg-template: initial;
 }

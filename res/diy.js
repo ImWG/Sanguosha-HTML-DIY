@@ -2,6 +2,8 @@ var EXTRA_SEGMENTS = [];
 var SKILL_TAGS = ['lord', 'compulsory', 'limit', 'wake'];
 var TEXT_RANGES = [];
 var currentItem = {};
+var templateBlobUrls = [];
+var cardBlobUrls = [];
 var PREVENT_CORS_MODE = false;
 
 window.onload = function() {
@@ -16,6 +18,15 @@ window.onload = function() {
 	if (PREVENT_CORS_MODE) {
 		convertCommonStyle();
 		loadFontPackage();
+	}
+	
+	var toolbarFont = document.getElementById('toolbarFont');
+	toolbarFont.onclick = function() {
+		var value = this.value;
+		if (value) {
+			toggleTagPairs('<font ' + value + '>', '</font>');
+			this.value = '';
+		}
 	}
 }
 
@@ -40,6 +51,17 @@ function getFileURL(file) {
 		getUrl = window.URL.createObjectURL(file);
 	} else if (window.webkitURL != undefined) { // webkit or chrome
 		getUrl = window.webkitURL.createObjectURL(file);
+	}
+	return getUrl;
+}
+function revokeURL(file) {
+	var getUrl = null;
+	if (window.revokeObjectURL != undefined) { // basic
+		getUrl = window.revokeObjectURL(file);
+	} else if (window.URL != undefined) { // mozilla(firefox)
+		getUrl = window.URL.revokeObjectURL(file);
+	} else if (window.webkitURL != undefined) { // webkit or chrome
+		getUrl = window.webkitURL.revokeObjectURL(file);
 	}
 	return getUrl;
 }
@@ -142,13 +164,18 @@ function generateFromInput(){
 	return object;
 }
 
-function loadTemplate(template){	
+function loadTemplate(template){
+	for (var i = templateBlobUrls.length - 1; i >= 0; --i) {
+		revokeURL(templateBlobUrls[i]);
+	}
+	templateBlobUrls.length = 0;
 	var templatePath = template + '/style.css';
 	var cssElement = document.getElementById('meta-template-css');
 	
 	var bufferedElement = document.querySelector('[path="' + templatePath + '"]');
 	if (bufferedElement) {
-		cssElement.href = URL.createObjectURL(new Blob([bufferedElement.innerText]));
+		cssElement.href = getFileURL(new Blob([bufferedElement.innerText]));
+		templateBlobUrls.push(cssElement.href);
 	}else {
 		cssElement.href = 'templates/' + templatePath;
 	}
@@ -247,6 +274,10 @@ function replaceSpecialCharacters(string){
 
 function createCard(object){
 	currentItem = object;
+	for (var i = cardBlobUrls.length - 1; i >= 0; --i) {
+		revokeURL(cardBlobUrls[i]);
+	}
+	cardBlobUrls.length = 0;
 	
 	var card = document.getElementById('template').getElementsByClassName('card')[0].cloneNode(true);
 	document.getElementById('result').appendChild(card);
@@ -257,7 +288,7 @@ function createCard(object){
 		var kingdomElement = card.getElementsByClassName('custom-kingdom')[0];
 		kingdomElement.innerHTML = kingdom;
 		kingdomElement.setAttribute('value', kingdom);
-		kingdomElement.setAttribute('length', kingdom.length);
+		kingdomElement.setAttribute('length', getTextLength(kingdom));
 		if (kingdom.length >= 2) {
 			var c1 = kingdom.charCodeAt(0), c2 = kingdom.charCodeAt(1);
 			if (c1 >= 0xd830 && c1 <= 0xfe0f && c2 >= 0xd830 && c2 <= 0xfe0f) {
@@ -266,7 +297,7 @@ function createCard(object){
 			}			
 		}
 	}else {
-		card.getElementsByClassName('custom-kingdom')[0].style.display = 'none';
+		//card.getElementsByClassName('custom-kingdom')[0].style.display = 'none';
 	}
 	card.setAttribute('kingdom', object.kingdom || '');
 	
@@ -274,7 +305,7 @@ function createCard(object){
 	var nickname = object.nickname || '';
 	nicknameElement.innerHTML = nickname;
 	nicknameElement.setAttribute('value', nickname);
-	nicknameElement.setAttribute('length', nickname.length);
+	nicknameElement.setAttribute('length', getTextLength(nickname));
 	if (nickname.length > 4){
 		nicknameElement.classList.add('nickname-small');
 	}
@@ -284,7 +315,7 @@ function createCard(object){
 	var name = typeof(object.name) == 'object' ? object.name.text : object.name;
 	nameElement.innerHTML = replaceSpecialCharacters(name);
 	nameElement.setAttribute('value', name);
-	nameElement.setAttribute('length', name.length);
+	nameElement.setAttribute('length', getTextLength(name));
 	if (name.length > 4){
 		nameElement.classList.add('name-small');
 	}
@@ -333,7 +364,7 @@ function createCard(object){
 		var textLength = 0;
 		for (var i = 0; i < object.skills.length; ++i){
 			skills.push(object.skills[i].name);
-			textLength += object.skills[i].description.length;
+			textLength += getTextLength(object.skills[i].description);
 			descs.push(object.skills[i].description
 				.replace(/♠/g, '<i class="suit suit-spade"></i>')
 				.replace(/♥/g, '<i class="suit suit-heart"></i>')
@@ -358,7 +389,7 @@ function createCard(object){
 			var node = document.createElement('label');
 			node.className = 'pointer ' + tags.join(' ');
 			node.innerHTML = skills[i];
-			node.setAttribute('length', skills[i].length);
+			node.setAttribute('length', getTextLength(skills[i]));
 			descElement.appendChild(node);
 			var paragraph = document.createElement('p');
 			paragraph.innerHTML = descs[i].replace(/\r?\n/g, '<br/>');
@@ -398,7 +429,7 @@ function createCard(object){
 			var value = object.extra[key]
 			div.className = key;
 			div.setAttribute('value', value);
-			div.setAttribute('length', value.length);
+			div.setAttribute('length', getTextLength(value));
 			div.innerHTML = value;
 			card.appendChild(div);
 			card.setAttribute('extra-' + key, value);
@@ -411,8 +442,42 @@ function createCard(object){
 	
 	for (var elements = card.querySelectorAll('*'), i = elements.length - 1; i >= 0; --i) {
 		var element = elements[i];
-		if (getComputedStyle(element).webkitBackgroundClip == 'text') {
+		var style = getComputedStyle(element);
+		if (style.webkitBackgroundClip == 'text') {
 			element.classList.add('_use-gradient');
+		}
+		var svgTemplate = style.getPropertyValue('--svg-template');
+		if (svgTemplate) {
+			svgTemplate = svgTemplate.replace(/\{[\w\-\.]+\}/g, function(r) {
+				var key = r.slice(1, -1);
+				if (key[0] == '-') {
+					return style.getPropertyValue(key);
+				}else{
+					return eval('object["' + key.replace(/\./g, '"]["') + '"]') || '';
+				}
+			});
+			var url = getFileURL(new Blob([svgTemplate], {type: 'image/svg+xml'}));
+			element.style.setProperty('--svg-image', 'url("' + url + '")');
+			element.style.setProperty('--svg-template', 'initial');
+			cardBlobUrls.push(url);
+			if (style.getPropertyValue('--svg-rasterize') == 'raster') {
+				var canvas = document.createElement('canvas');
+				var image = new Image();
+				image.onload = function() {
+					var width = image.naturalWidth * 1;
+					var height = image.naturalHeight * 1;
+					canvas.width = width;
+					canvas.height = height;
+					var ctx = canvas.getContext('2d');
+					ctx.drawImage(image, 0, 0, image.naturalWidth, image.naturalHeight, 0, 0, width, height);
+					canvas.toBlob(function(blob) {
+						url = getFileURL(blob);
+						element.style.setProperty('--svg-image', 'url("' + url + '")');
+						cardBlobUrls.push(url);
+					});
+				}
+				image.src = url;
+			}
 		}
 	}
 				
@@ -775,7 +840,7 @@ function createImage() {
 				result.style.setProperty('--output-scale', scale);
 				return html2canvas(result, {
 					allowTaint: true,
-					useCORS: true,
+					useCORS: true
 				});
 			}).then(function(canvas) {
 				document.body.parentElement.style.width = '';
@@ -797,8 +862,9 @@ function createImage() {
 								a.click();
 							}else{
 								canvas.toBlob(function(blob) {
-									a.href = URL.createObjectURL(blob);
+									a.href = getFileURL(blob);
 									a.click();
+									cardBlobUrls.push(a.href);
 								});
 							}
 						}
@@ -885,6 +951,10 @@ function convertText(element, pattern, replace) {
 	}
 }
 
+function getTextLength(text) {
+	return text ? text.replace(/<[^>]+>/g, '').length : 0;
+}
+
 function hideOutput() {
 	document.getElementById('output').style.display = 'none';
 	document.getElementById('output').style.backgroundColor = '';
@@ -941,7 +1011,7 @@ function startCrop(){
 	var file = input.files[0];
 	if (file) {
 		var image = new Image();
-		image.src = getFileURL(input.files[0]);
+		image.src = getFileURL(input.files[0]); // Not revoked
 		image.onload = function() {
 			var canvas = document.getElementById('canvas-trim');
 			var width0 = image.naturalWidth;
@@ -1039,17 +1109,6 @@ function startCrop(){
 	}
 }
 
-function getFileURL(file) {
-	var getUrl = null;
-	if (window.createObjectURL != undefined) { // basic
-		getUrl = window.createObjectURL(file);
-	} else if (window.URL != undefined) { // mozilla(firefox)
-		getUrl = window.URL.createObjectURL(file);
-	} else if (window.webkitURL != undefined) { // webkit or chrome
-		getUrl = window.webkitURL.createObjectURL(file);
-	}
-	return getUrl;
-}
 
 function showTrimPanel(show){
 	document.getElementById('panel-trim').style.display = show ? '' : 'none';
@@ -1071,7 +1130,8 @@ function loadMobileSrcs(style) { // 用于移动版的解包
 				xhr.onload = function() {
 					if (this.status == 200) {
 						var blob = this.response;
-						list[i1] = window.URL.createObjectURL(blob);
+						list[i1] = getFileURL(blob);
+						templateBlobUrls.push(list[i1]);
 						if (--count <= 1) {
 							document.getElementById('unpackedSrc').innerHTML = '.card {'
 							 + list.map(function(e, j) {
@@ -1180,7 +1240,7 @@ function loadFontPackage() {
 							offset += 4;
 							var f = content.slice(offset, offset + k);
 							offset += k;
-							fonts.push({name: n.toLowerCase(), content: URL.createObjectURL(new Blob([f]))});
+							fonts.push({name: n.toLowerCase(), content: getFileURL(new Blob([f]))});
 						}
 						if (fonts.length > 0) {
 							cssElement.innerHTML = cssElement.innerHTML.replace(/\.\.\/fonts\/[^)'"]+/g, function(r) {
@@ -1212,14 +1272,14 @@ function setTextToolbar(element) {
 		var offsetY = element.offsetTop;
 		hint.style.left = offsetX + 'px';
 		hint.style.top = offsetY + 'px';
-		hint.style.display = 'block';
+		hint.style.display = 'initial';
 		currentTextArea = element;
 		clearTimeout(lastTextTimeout);
 	}else{
 		clearTimeout(lastTextTimeout);
 		lastTextTimeout = setTimeout(function() {
 			hint.style.display = '';
-			currentTextArea = null;
+			//currentTextArea = null;
 		}, 200);
 	}
 }
@@ -1227,9 +1287,9 @@ function toggleTagPairs(prefix, postfix) {
 	if (currentTextArea) {
 		var start = currentTextArea.selectionStart;
 		var end = currentTextArea.selectionEnd;
+		var text = currentTextArea.value.slice(start, end);
 		var prefixLength = prefix.length;
 		var postfixLength = postfix.length;
-		var text = currentTextArea.value.slice(start, end);
 		if (text.slice(0, prefixLength) == prefix && text.slice(-postfixLength) == postfix) {
 			currentTextArea.setRangeText(text.slice(prefixLength, -postfixLength), start, end);
 			currentTextArea.setSelectionRange(start, end - prefixLength - postfixLength);
