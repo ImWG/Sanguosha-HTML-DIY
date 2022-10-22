@@ -118,6 +118,7 @@
 		1.5px 0 black, -1.5px -0 black, 0 -1.5px black, 0px 1.5px black;
 	font-family: 'DFPNewChuan-B5', 'ZhunYuan';
 	font-size: 28px;
+	line-height: 1em;
 	writing-mode: tb-rl;
 	text-align: center;
 }
@@ -145,6 +146,7 @@
 			3px 3px 3px black, 3px 3px 3px black;
 	font-family: 'SymbolAnd', 'JMMaoCaoXingEx', 'JMMaoCaoXing', 'STXingKai';
 	font-size: 54px;
+	line-height: 1em;
 	writing-mode: tb-rl;
 	letter-spacing: 0.1em;
 }

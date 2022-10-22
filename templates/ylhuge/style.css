@@ -155,7 +155,7 @@
 	--stroke-color: #D3A65E;
 }
 .card.lord .frame .hitpoints li {
-	background-position-y: -415px;
+	background-position-y: -320px;
 }
 
 .card .description {
@@ -350,16 +350,16 @@
 	background-position-y: -256px;
 }
 
-.card.shu .custom-kingdom::before {
+.card.shu .custom-kingdom:empty::before {
 	content: '蜀';
 }
-.card.wu .custom-kingdom::before {
+.card.wu .custom-kingdom:empty::before {
 	content: '吴';
 }
-.card.qun .custom-kingdom::before {
+.card.qun .custom-kingdom:empty::before {
 	content: '群';
 }
-.card.jin .custom-kingdom::before {
+.card.jin .custom-kingdom:empty::before {
 	content: '晋';
 }
 
