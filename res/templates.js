@@ -7,6 +7,7 @@ var TEMPLATES = [
 	{name: "国战模板", path: "guozhan"},
 	{name: "三国杀2020模板", path: "diy2020"},
 	{name: "桌游志·☆SP模板", path: "star-sp"},
+	{name: "桌游志·全幅模板", path: "spcloud"},
 	{name: "欢乐三国杀模板", path: "xhlsgs"},
 	{name: "动漫模板", path: "anime"},
 	{name: "印花模板", path: "yinhua"},

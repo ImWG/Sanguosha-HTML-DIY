@@ -13,7 +13,9 @@
 	width: 420px;
 	height: 590px;
 	--variants: 魏, wei, 蜀, shu, 吴, wu, 群, qun, 晋, jin, 汉, han, 神, god, 
-		魏主公, wei lord, 蜀主公, shu lord, 吴主公, wu lord, 群主公, qun lord, 晋主公, jin lord, 汉主公, han lord;
+		魏主公, wei lord, 蜀主公, shu lord, 吴主公, wu lord, 群主公, qun lord, 晋主公, jin lord, 汉主公, han lord,
+		双势力魏, wei double, 双势力蜀, shu double, 双势力吴, wu double,
+		双势力群, qun double, 双势力晋, jin double, 双势力汉, han double;
 	--kingdom-color: #99C9E7;
 	
 	--extra-segments: 实际势力, real-kingdom;
@@ -81,6 +83,9 @@
 .card .hitpoints .drained{
 	background-position-y: -40px;
 }
+.card .hitpoints .overflow{
+	background-position-y: -76px;
+}
 
 /* For high HPs */
 .card .hitpoints::after{
@@ -92,22 +97,22 @@
 	font-size: 24px;
     top: -12px;
 }
-.card .hitpoints[losthp]::after{
+.card .hitpoints[losthp]::after,
+.card .hitpoints[overflow]::after {
 	content: attr(hp) '/' attr(maxhp);
 }
-.card .hitpoints li~li {
+
+.card .hitpoints[total='0']::after, .card .hitpoints[total='1']::after, .card .hitpoints[total='2']::after,
+.card .hitpoints[total='3']::after, .card .hitpoints[total='4']::after, .card .hitpoints[total='5']::after,
+.card .hitpoints[total='6']::after, .card .hitpoints[total='7']::after, .card .hitpoints[total='8']::after {
 	display: none;
 }
-.card .hitpoints[maxhp='0']::after, .card .hitpoints[maxhp='1']::after, .card .hitpoints[maxhp='2']::after,
-.card .hitpoints[maxhp='3']::after, .card .hitpoints[maxhp='4']::after, .card .hitpoints[maxhp='5']::after,
-.card .hitpoints[maxhp='6']::after, .card .hitpoints[maxhp='7']::after, .card .hitpoints[maxhp='8']::after {
+
+.card .hitpoints:not([total='0']):not([total='1']):not([total='2']):not([total='3']):not([total='4']):not([total='5']):not([total='6']):not([total='7']):not([total='8']) li:not(:first-child) {
 	display: none;
 }
-.card .hitpoints[maxhp='0']  li~li, .card .hitpoints[maxhp='1']  li~li, .card .hitpoints[maxhp='2']  li~li,
-.card .hitpoints[maxhp='3']  li~li, .card .hitpoints[maxhp='4']  li~li, .card .hitpoints[maxhp='5']  li~li,
-.card .hitpoints[maxhp='6']  li~li, .card .hitpoints[maxhp='7']  li~li, .card .hitpoints[maxhp='8']  li~li {
-	display: inline-block;
-}
+
+
 
 .card .nickname {
 	left: 47px;
@@ -508,4 +513,77 @@
     -webkit-text-fill-color: white !important;
     -webkit-background-clip: content-box !important;
     background-image: none !important;
+}
+
+
+/* double kingdoms */
+.card.double .frame::before {
+	transform: scale(0.8) translate(17px, -17px);
+}
+.card.double .real-kingdom {
+	display: block;
+	position: absolute;
+	display: block;
+	left: 15px;
+	top: 10px;
+	background-image: url('images/kingdoms.png');
+	width: 100px;
+	height: 96px;
+	z-index: 11;
+	transform: scale(0.8) translate(-17px, 17px);
+	font-size: 0;
+}
+.card.double.shu .real-kingdom {
+	background-position-x: -96px;
+}
+.card.double.wu .real-kingdom {
+	background-position-x: -192px;
+}
+.card.double.qun .real-kingdom {
+	background-position-x: -288px;
+}
+.card.double.jin .real-kingdom {
+	background-position-x: -480px;
+}
+.card.double.han .real-kingdom {
+	background-position-x: -576px;
+}
+.card.double .frame {
+	background: var(--second-frame), url('images/wei.png');
+}
+.card.shu.double .frame {
+	background: var(--second-frame), url('images/shu.png');
+}
+.card.wu.double .frame {
+	background: var(--second-frame), url('images/wu.png');
+}
+.card.qun.double .frame {
+	background: var(--second-frame), url('images/qun.png');
+}
+.card.jin.double .frame {
+	background: var(--second-frame), url('images/jin.png');
+}
+.card.han.double .frame {
+	background: var(--second-frame), url('images/han.png');
+}
+.card.double .frame {
+	--second-frame: linear-gradient(transparent, transparent);
+}
+.card.double[extra-real-kingdom="wei"] .frame {
+	--second-frame: url('images/wei2.png');
+}
+.card.double[extra-real-kingdom="shu"] .frame {
+	--second-frame: url('images/shu2.png');
+}
+.card.double[extra-real-kingdom="wu"] .frame {
+	--second-frame: url('images/wu2.png');
+}
+.card.double[extra-real-kingdom="qun"] .frame {
+	--second-frame: url('images/qun2.png');
+}
+.card.double[extra-real-kingdom="han"] .frame {
+	--second-frame: url('images/han2.png');
+}
+.card.double[extra-real-kingdom="jin"] .frame {
+	--second-frame: url('images/jin2.png');
 }
