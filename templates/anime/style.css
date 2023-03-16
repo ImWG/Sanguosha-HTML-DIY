@@ -80,13 +80,15 @@
 	right: 8px;
 	bottom: 4px;
 }
-.card .hitpoints[losthp]::after {
+.card .hitpoints[losthp]::after,
+.card .hitpoints[overflow]::after {
 	content: attr(hp) '/' attr(maxhp);
 }
 .card .hitpoints[losthp]::after,
-.card .hitpoints:not([maxhp='0']):not([maxhp='1']):not([maxhp='2']):not([maxhp='3']
-		):not([maxhp='4']):not([maxhp='5']):not([maxhp='6']):not([maxhp='7']
-		):not([maxhp='8']):not([maxhp='9'])::after {
+.card .hitpoints[overflow]::after,
+.card .hitpoints:not([total='0']):not([total='1']):not([total='2']):not([total='3']
+		):not([total='4']):not([total='5']):not([total='6']):not([total='7']
+		):not([total='8']):not([total='9'])::after {
 	font-size: 20px;
 	right: 6px;
 }

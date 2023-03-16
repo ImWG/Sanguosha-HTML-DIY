@@ -57,10 +57,14 @@
 	background-image: url(images/classic/hp-goatd.png);
 }
 
-.card.classic .hitpoints:not([maxhp='0']):not([maxhp='1']):not([maxhp='2']):not([maxhp='3']):not([maxhp='4']):not([maxhp='5']) li ~ li{
+.card .hitpoints .overflow{
+	transform: scale(0.6);
+}
+
+.card.classic .hitpoints:not([total='0']):not([total='1']):not([total='2']):not([total='3']):not([total='4']):not([total='5']) li ~ li{
 	display: none;
 }
-.card.classic .hitpoints:not([maxhp='0']):not([maxhp='1']):not([maxhp='2']):not([maxhp='3']):not([maxhp='4']):not([maxhp='5'])::after {
+.card.classic .hitpoints:not([total='0']):not([total='1']):not([total='2']):not([total='3']):not([total='4']):not([total='5'])::after {
 	content: attr(hp) ' / ' attr(maxhp);
 	font-family: 'FZKaTong';
 	font-size: 26px;

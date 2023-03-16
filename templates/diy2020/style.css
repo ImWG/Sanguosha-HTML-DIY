@@ -68,23 +68,27 @@
 .card .frame .hitpoints li.drained {
 	background-position-x: -252px;
 }
+.card .frame .hitpoints li.overflow{
+	background-position-y: -150px;
+}
 
 /* For high HPs */
 .card .hitpoints::after {
 	color: #78D9F4;
-}
-.card .hitpoints:not([maxhp='0']):not([maxhp='1']):not([maxhp='2']):not([maxhp='3']):not([maxhp='4']):not([maxhp='5']):not([maxhp='6']):not([maxhp='7']):not([maxhp='8']):not([maxhp='9']):not([maxhp='10']):not([maxhp='11']):not([maxhp='12'])::after{
-	content: '×' attr(hp);
 	font-family: Arial;
 	font-weight: bold;
 	position: relative;
 	font-size: 36px;
     top: -6px;
 }
-.card .hitpoints[losthp]:not([maxhp='0']):not([maxhp='1']):not([maxhp='2']):not([maxhp='3']):not([maxhp='4']):not([maxhp='5']):not([maxhp='6']):not([maxhp='7']):not([maxhp='8']):not([maxhp='9']):not([maxhp='10']):not([maxhp='11']):not([maxhp='12'])::after{
+.card .hitpoints:not([maxhp='0']):not([maxhp='1']):not([maxhp='2']):not([maxhp='3']):not([maxhp='4']):not([maxhp='5']):not([maxhp='6']):not([maxhp='7']):not([maxhp='8']):not([maxhp='9']):not([maxhp='10']):not([maxhp='11']):not([maxhp='12'])::after{
+	content: '×' attr(hp);
+}
+.card .hitpoints[losthp]:not([maxhp='0']):not([maxhp='1']):not([maxhp='2']):not([maxhp='3']):not([maxhp='4']):not([maxhp='5']):not([maxhp='6']):not([maxhp='7']):not([maxhp='8']):not([maxhp='9']):not([maxhp='10']):not([maxhp='11']):not([maxhp='12'])::after,
+.card .hitpoints[overflow]:not([hp='0']):not([hp='1']):not([hp='2']):not([hp='3']):not([hp='4']):not([hp='5']):not([hp='6']):not([hp='7']):not([hp='8']):not([hp='9']):not([hp='10']):not([hp='11']):not([hp='12'])::after{
 	content: attr(hp) '/' attr(maxhp);
 }
-.card .hitpoints:not([maxhp='0']):not([maxhp='1']):not([maxhp='2']):not([maxhp='3']):not([maxhp='4']):not([maxhp='5']):not([maxhp='6']):not([maxhp='7']):not([maxhp='8']):not([maxhp='9']):not([maxhp='10']):not([maxhp='11']):not([maxhp='12']) li:not(:first-child) {
+.card .hitpoints:not([total='0']):not([total='1']):not([total='2']):not([total='3']):not([total='4']):not([total='5']):not([total='6']):not([total='7']):not([total='8']):not([total='9']):not([total='10']):not([total='11']):not([total='12']) li:not(:first-child) {
 	display: none;
 }
 
@@ -320,6 +324,12 @@
 .card.old .frame .hitpoints li, .card[extra-hp-style="old"] .frame .hitpoints li {
 	background-position-y: -100px;
 	margin-right: -4px;
+}
+.card.ink .frame .hitpoints li.overflow, .card[extra-hp-style="ink"] .frame .hitpoints li.overflow {
+	background-position-y: -200px;
+}
+.card.old .frame .hitpoints li.overflow, .card[extra-hp-style="old"] .frame .hitpoints li.overflow {
+	background-position-y: -250px;
 }
 .hp-style {
 	display: none;

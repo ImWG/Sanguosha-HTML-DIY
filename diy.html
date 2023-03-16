@@ -143,6 +143,12 @@ XXX 001</textarea></p>
 		<canvas id='canvas-trim' style='display: none;'></canvas>
 	</div>
 	
+	<div id='panel-help' style='display: none;'>
+		<button class="btn-close"></button>
+		<div class="content">
+		</div>
+	</div>
+	
 	<div id='template' style='display: none;'>
 		<div class='card shu'>
 			<div class='illustration'>
@@ -189,15 +195,15 @@ XXX 001</textarea></p>
 		background: #B8BAC3;
 		padding: 8px 8px 56px;
 		overflow-y: hidden;
+		font-size: 13px;
 	}
 	#panel::before {
-		content: '三国杀卡牌制作器\A 0912 By 开不了车';
+		content: '三国杀卡牌制作器 1.6.1 0218 By 开不了车';
 		display: block;
 		white-space: pre;
 		position: fixed;
-		left: 320px;
-		bottom: 8px;
-		width: 100px;
+		left: 8px;
+		bottom: 4px;
 		text-align: right;
 		font-size: 12px;
 		color: #458;
@@ -209,34 +215,43 @@ XXX 001</textarea></p>
 		margin-right: -8px;
 		padding-right: 8px;
 		overflow: auto;
+		overflow: overlay;
 		position: relative;
 	}
 	
 	#panel *{
 		font-family: auto;
+		box-sizing: border-box;
 	}
 	#panel label{
 		font-size: 13px;
 	}
-	/*#panel input[type='text'] {
-		width: 300px;
-	}*/
-	#panel textarea{
+	#panel input, #panel textarea {
+		font-size: unset;
+	}
+	#panel input[type="button"], #panel input[type="submit"], #panel button {
+		padding-top: 0px;
+		padding-bottom: 0px;
+	}
+	#panel textarea {
 		left: 100px;
-		width: calc(100% - 72px);
+		width: calc(100% - 80px);
 		height: 48px;
+		min-height: 40px;
 		resize: vertical;
+		vertical-align: bottom;
 	}
 	#panel .short{
 		width: calc(50% - 64px);
+		height: 21px;
 	}
 	#panel .short[type='file']{
 		width: 72px;
 	}
 	
 	#panel p {
-		margin-top: 8px;
-		margin-bottom: 8px;
+		margin-top: 6px;
+		margin-bottom: 6px;
 	}
 	
 	#panel #panel-json-code{
@@ -250,9 +265,14 @@ XXX 001</textarea></p>
 		height: 40px;
 		padding: 0;
 		margin: 0;
+		vertical-align: middle;
+	}
+	#panel-skill-list > div:not(:first-child) {
+		padding-top: 6px;
 	}
 	#panel-skill-list textarea {
 		width: calc(100% - 160px);
+		vertical-align: middle;
 	}
 	#panel-skill-list textarea:first-line {
 		font-weight: bold;
@@ -316,7 +336,7 @@ XXX 001</textarea></p>
 		display: none !important;
 	}
 	
-	#panel-trim {
+	#panel-trim, #panel-help {
 		position: absolute;
 		left: 0;
 		top: 0;
@@ -324,6 +344,7 @@ XXX 001</textarea></p>
 		right: 0;
 		z-index: 20;
 		background-color: #FEC;
+		overflow: auto;
 	}
 	
 	#btn-trim-close {
@@ -345,6 +366,7 @@ XXX 001</textarea></p>
 		margin-left: -3em;
 		width: 3em;
 		white-space: pre;
+		height: 21px;
 	}
 	
 	#textToolbar {
@@ -362,6 +384,35 @@ XXX 001</textarea></p>
 		width: 32px;
 		height: 24px;
 		vertical-align: bottom;
+	}
+	
+	.btn-close {
+		position: fixed;
+		right: 12px;
+		top: 12px;
+		width: 1em;
+		height: 1em;
+		font-size: 1.5em;
+		line-height: 1;
+		padding: 0;
+		background-color: black;
+		color: white;
+		border-radius: 50%;
+	}
+	.btn-close::before {
+		content: '×';
+		position: absolute;
+		margin: auto;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+	}
+	
+	#panel-help .content {
+		margin: auto;
+		max-width: 40em;
+		white-space: pre-wrap;
 	}
 	
 	.mobile-only {

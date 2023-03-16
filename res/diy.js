@@ -21,7 +21,7 @@ window.onload = function() {
 	}
 	
 	var toolbarFont = document.getElementById('toolbarFont');
-	toolbarFont.onclick = function() {
+	toolbarFont.onchange = function() {
 		var value = this.value;
 		if (value) {
 			toggleTagPairs('<font ' + value + '>', '</font>');
@@ -348,7 +348,8 @@ function createCard(object){
 	var hitpoints = card.getElementsByClassName('hitpoints')[0]
 	hitpoints.setAttribute('hp', hp);
 	hitpoints.setAttribute('maxhp', hp);
-	for (var i = 1, limit = Math.min(hp, 100); i <= limit; ++i){
+	hitpoints.setAttribute('total', Math.max(hp, hp + drained));
+	for (var i = 1, limit = Math.min(hp, hp + drained, 100); i <= limit; ++i){
 		var node = document.createElement('li')
 		hitpoints.appendChild(node)
 	}
@@ -359,6 +360,15 @@ function createCard(object){
 			var node = document.createElement('li')
 			node.className = 'drained';
 			hitpoints.appendChild(node)
+		}
+	}else if (drained < 0){
+		drained = -drained;
+		hitpoints.setAttribute('maxhp', hp - drained);
+		hitpoints.setAttribute('overflow', drained);
+		for (var i = 1; i <= drained; ++i){
+			var node = document.createElement('li')
+			node.className = 'overflow';
+			hitpoints.appendChild(node);
 		}
 	}
 
@@ -398,7 +408,7 @@ function createCard(object){
 			node.setAttribute('length', getTextLength(skills[i]));
 			descElement.appendChild(node);
 			var paragraph = document.createElement('p');
-			paragraph.innerHTML = descs[i].replace(/\r?\n/g, '<br/>');
+			paragraph.innerHTML = descs[i].replace(/\r?\n/g, '<br/>').replace(/(“)/g, '&zwnj;$1'); // 防止引号bug
 			paragraph.className = tags.join(' ');
 			descElement.appendChild(paragraph);
 			height = descElement.scrollHeight;

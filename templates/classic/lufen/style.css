@@ -65,6 +65,9 @@
 .card .hitpoints .drained{
 	background-position-y: -35px;
 }
+.card .hitpoints .overflow{
+	transform: scale(0.66);
+}
 
 /* For high HPs */
 .card .hitpoints::after{
@@ -79,17 +82,20 @@
 .card .hitpoints[losthp]::after{
 	content: attr(hp) '+' attr(losthp);
 }
+.card .hitpoints[overflow]::after{
+	content: attr(maxhp) '-' attr(overflow);
+}
 .card .hitpoints li~li {
 	display: none;
 }
-.card .hitpoints[maxhp='0']::after, .card .hitpoints[maxhp='1']::after, .card .hitpoints[maxhp='2']::after,
-.card .hitpoints[maxhp='3']::after, .card .hitpoints[maxhp='4']::after, .card .hitpoints[maxhp='5']::after,
-.card .hitpoints[maxhp='6']::after, .card .hitpoints[maxhp='7']::after, .card .hitpoints[maxhp='8']::after {
+.card .hitpoints[total='0']::after, .card .hitpoints[total='1']::after, .card .hitpoints[total='2']::after,
+.card .hitpoints[total='3']::after, .card .hitpoints[total='4']::after, .card .hitpoints[total='5']::after,
+.card .hitpoints[total='6']::after, .card .hitpoints[total='7']::after, .card .hitpoints[total='8']::after {
 	display: none;
 }
-.card .hitpoints[maxhp='0']  li~li, .card .hitpoints[maxhp='1']  li~li, .card .hitpoints[maxhp='2']  li~li,
-.card .hitpoints[maxhp='3']  li~li, .card .hitpoints[maxhp='4']  li~li, .card .hitpoints[maxhp='5']  li~li,
-.card .hitpoints[maxhp='6']  li~li, .card .hitpoints[maxhp='7']  li~li, .card .hitpoints[maxhp='8']  li~li {
+.card .hitpoints[total='0']  li~li, .card .hitpoints[total='1']  li~li, .card .hitpoints[total='2']  li~li,
+.card .hitpoints[total='3']  li~li, .card .hitpoints[total='4']  li~li, .card .hitpoints[total='5']  li~li,
+.card .hitpoints[total='6']  li~li, .card .hitpoints[total='7']  li~li, .card .hitpoints[total='8']  li~li {
 	display: inline-block;
 }
 

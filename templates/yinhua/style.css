@@ -87,11 +87,15 @@
 	opacity: 0.35;
 	counter-increment: maxhp;
 }
+.card .hitpoints li.overflow {
+	transform: scale(0.6);
+	counter-increment: hp;
+}
 .card .hitpoints::after {
 	font-size: 28px;
 	color: #C3272B;
 }
-.card .hitpoints:not([maxhp='0']):not([maxhp='1']):not([maxhp='2']):not([maxhp='3']):not([maxhp='4']):not([maxhp='5']) li ~ li {
+.card .hitpoints:not([total='0']):not([total='1']):not([total='2']):not([total='3']):not([total='4']):not([total='5']) li ~ li {
 	/* display: none; */
 	visibility: hidden;
 	position: absolute;
@@ -112,10 +116,11 @@
 .card .hitpoints[maxhp='19']::after { content: '十九'; }
 .card .hitpoints[maxhp='20']::after { content: '二十'; }
 
-.card .hitpoints:not([maxhp='0']):not([maxhp='1']):not([maxhp='2']):not([maxhp='3']):not([maxhp='4']):not([maxhp='5'])::after {
+.card .hitpoints:not([total='0']):not([total='1']):not([total='2']):not([total='3']):not([total='4']):not([total='5'])::after {
 	content: counter(hp, cjk-ideographic);
 }
-.card .hitpoints:not([maxhp='0']):not([maxhp='1']):not([maxhp='2']):not([maxhp='3']):not([maxhp='4']):not([maxhp='5'])[losthp]::after {
+.card .hitpoints:not([total='0']):not([total='1']):not([total='2']):not([total='3']):not([total='4']):not([total='5'])[losthp]::after,
+.card .hitpoints:not([total='0']):not([total='1']):not([total='2']):not([total='3']):not([total='4']):not([total='5'])[overflow]::after {
 	content: counter(hp, cjk-ideographic) '之' counter(maxhp, cjk-ideographic);
 }
 
