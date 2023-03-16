@@ -3,6 +3,11 @@
 /* 编写：开不了车 */
 /* 如有需要，可以修改所用字体、字号 */
 
+@font-face {
+	font-family: "CardSymbols";
+	src: url("cardsymbols.ttf");
+}
+
 .card {
 	width: 400px;
 	height: 561px;
@@ -35,14 +40,14 @@
 .card .hitpoints::after {
 	position: absolute;
 	display: block;
-	font-size: 44px;
+	font-size: 52px;
 	left: 18px;
-	top: 55px;
+	top: 54px;
 	width: 50px;
 	height: 44px;
 	text-align: center;
-	font-family: 'SymbolSuit';
-	transform: scale(0.8, 1); /* 实际比这个字体要窄一些 */
+	font-family: 'CardSymbols';
+	-transform: scale(0.8, 1); /* 实际比这个字体要窄一些 */
 }
 .card[kingdom^='♠'] .hitpoints, .card[kingdom^='♣']  .hitpoints {
 	display: block;
@@ -53,25 +58,26 @@
 	color: #701213; /* 原本是#661213，调整了红色值使其更鲜明 */
 }
 .card[kingdom^='♠'] .hitpoints::after {
-	content: '♠';
+	content: '\21';
 }
 .card[kingdom^='♣'] .hitpoints::after {
-	content: '♣';
+	content: '\24';
 }
 .card[kingdom^='♥'] .hitpoints::after {
-	content: '♥';
+	content: '\22';
 }
 .card[kingdom^='♦'] .hitpoints::after {
-	content: '♦';
+	content: '\23';
 }
 .card .hitpoints::before {
 	content: attr(hp);
-	font-family: XingKai;
+	font-family: CardSymbols;
 	font-weight: bold;
+	font-style: italic;
 	position: absolute;
 	display: block;
-	font-size: 44px;
-	left: 18px;
+	font-size: 46px;
+	left: 16px;
 	top: 23px;
 	width: 50px;
 	height: 44px;
@@ -81,12 +87,10 @@
 	content: 'A';
 }
 .card .hitpoints[hp='11']::before {
-	content: 'J';
+	content: '@';
 }
 .card .hitpoints[hp='12']::before {
 	content: 'Q';
-	font-family: ZhunYuan; /* 行楷的Q像2 */
-	font-style: italic;
 }
 .card .hitpoints[hp='13']::before {
 	content: 'K';
@@ -349,22 +353,21 @@
 }
 .card.horse .attack-range {
     position: absolute;
-    font-size: 90px;
-    font-family: 'XingKai';
+    font-size: 100px;
+    line-height: 100px;
+    font-family: 'CardSymbols';
     text-align: center;
     width: 200px;
-    left: 90px;
-    bottom: 70px;
+    left: 96px;
+    bottom: 76px;
 	text-shadow: 0 0 6px white;
 	z-index: 10;
 }
 .card.horse .attack-range[length='3'] {
-	font-size: 64px;
-	line-height: 95px;
+	font-size: 80px;
 }
 .card.horse .attack-range[length='4'] {
-	font-size: 50px;
-	line-height: 105px;
+	font-size: 64px;
 }
 .card.horse .description-large {
 	top: 366px;
@@ -388,19 +391,19 @@
 }
 .card.weapon .attack-range {
     position: absolute;
-    font-family: 'XingKai';
-    font-size: 90px;
-	line-height: 90px;
+    font-family: 'CardSymbols';
+    font-size: 124px;
+	line-height: 124px;
     text-align: center;
     width: 80px;
-    left: 47px;
-    bottom: 72px;
+    left: 45px;
+    bottom: 59px;
 	text-shadow: 0 0 6px white;
 	z-index: 10;
 }
 .card.weapon .attack-range[length='2'] {
-	font-size: 64px;
-	line-height: 90px;
+	font-size: 80px;
+	line-height: 120px;
 }
 .card.weapon .description {
 	width: 188px;
@@ -512,6 +515,10 @@
 	background-image: url('images/role-mask.png');
 	background-color: var(--extra-name-color);
 	height: 562px;
+}
+
+.card.role .hitpoints {
+	display: none;
 }
 
 .card.role .nickname {

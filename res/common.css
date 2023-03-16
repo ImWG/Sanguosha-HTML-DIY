@@ -4,22 +4,26 @@
 /* System Fonts for Mobile */
 @font-face {
 	font-family: 'SongTi';
-	src: local('宋体'), local('SimSun'), url('../fonts/mobile/STSONG.ttf'),
+	src: local('宋体'), local('SimSun'),
+		url('../fonts/mobile/STSONG.woff') format('woff'), url('../fonts/mobile/STSONG.ttf') format('truetype'),
 		url('../fonts/mobile/SimSong.woff') format('woff'), url('../fonts/mobile/SimSong.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'FangSong';
-	src: local('仿宋'), local('SimFang'), local('FangSong'), url('../fonts/mobile/SimFang.ttf'),
+	src: local('仿宋'), local('SimFang'), local('FangSong'),
+		url('../fonts/mobile/SimFang.woff') format('woff'), url('../fonts/mobile/SimFang.ttf') format('truetype'),
 		url('../fonts/mobile/STFangSong.woff') format('woff'), url('../fonts/mobile/STFangSong.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'KaiTi';
-	src: local('楷体'), local('SimKai'), local('KaiTi'), url('../fonts/mobile/SimKai.ttf'),
+	src: local('楷体'), local('SimKai'), local('KaiTi'),
+		url('../fonts/mobile/SimKai.woff'), format('woff'), url('../fonts/mobile/SimKai.ttf') format('truetype'),
 		url('../fonts/mobile/STKaiTi.woff') format('woff'), url('../fonts/mobile/STKaiTi.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'HeiTi';
-	src: local('黑体'), local('SimHei'), url('../fonts/mobile/SIMHEI.ttf'),
+	src: local('黑体'), local('SimHei'),
+		url('../fonts/mobile/SIMHEI.woff') format('woff'), url('../fonts/mobile/SIMHEI.ttf') format('truetype'),
 		url('../fonts/mobile/STHEI.woff') format('woff'), url('../fonts/mobile/STHEI.ttf') format('truetype');
 }
 @font-face {
@@ -313,22 +317,21 @@ font[huali] {
 	line-height: .8em;
 	font-style: normal;
 	font-family: SymbolSuit;
-	vertical-align: center;
 }
 .card .suit-spade::before {
-	content: '♠';
+	content: '\21';
 	color: black;
 }
 .card .suit-heart::before {
-	content: '♥';
+	content: '\22';
 	color: crimson;
 }
 .card .suit-diamond::before {
-	content: '♦';
+	content: '\23';
 	color: crimson;
 }
 .card .suit-club::before {
-	content: '♣';
+	content: '\24';
 	color: black;
 }
 
